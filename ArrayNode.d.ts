@@ -32,9 +32,9 @@ export default class ArrayNode extends BaseNode {
      * @param details Node structure
      * @param extend Extend the base node structure, if false, don't copy the
      * 					base node structure details
-     * @returns ArrayNode
+     * @returns a new instance
      */
-    constructor(details: Record<string, any>, extend?: Record<string, any> | boolean);
+    constructor(details: Record<string, any>, extend?: Record<string, any> | false);
     /**
      * Child
      *
@@ -42,7 +42,7 @@ export default class ArrayNode extends BaseNode {
      *
      * @name child
      * @access public
-     * @return object
+     * @returns the instance of the elements node
      */
     child(): BaseNode;
     /**
@@ -53,10 +53,10 @@ export default class ArrayNode extends BaseNode {
      *
      * @name clean
      * @access public
-     * @param value The value to validate
-     * @return the cleaned array values
+     * @param value The value to clean
+     * @returns the cleaned array values
      */
-    clean(value?: any[], level?: string[]): any[] | null;
+    clean(value?: any[] | null, level?: string[]): any[] | null;
     /**
      * Min/Max
      *
@@ -67,9 +67,9 @@ export default class ArrayNode extends BaseNode {
      * @access public
      * @param minimum The minimum value
      * @param maximum The maximum value
-     * @return The currently set min / max
+     * @returns The currently set min / max on get, or void for set
      */
-    minmax(minimum?: number | string | null, maximum?: number | string | null): void | object;
+    minmax(minimum?: number | string | null, maximum?: number | string | null): object | void;
     /**
      * To Object
      *
@@ -102,5 +102,5 @@ export default class ArrayNode extends BaseNode {
      * @param level Names of parents to this node
      * @returns if the value is valid or not
      */
-    valid(value: any[], level?: string[]): boolean;
+    valid(value: any[] | null, level?: string[]): boolean;
 }

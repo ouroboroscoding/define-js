@@ -55,9 +55,9 @@ export default class ArrayNode extends BaseNode {
 	 * @param details Node structure
 	 * @param extend Extend the base node structure, if false, don't copy the
 	 * 					base node structure details
-	 * @returns ArrayNode
+	 * @returns a new instance
 	 */
-	constructor(details: Record<string, any>, extend?: Record<string, any> | boolean) {
+	constructor(details: Record<string, any>, extend?: Record<string, any> | false) {
 
 		// If the details are not an Object
 		if(!isObject(details)) {
@@ -148,9 +148,9 @@ export default class ArrayNode extends BaseNode {
 	 *
 	 * @name child
 	 * @access public
-	 * @return object
+	 * @returns the instance of the elements node
 	 */
-	child() {
+	child(): BaseNode {
 		return this._node;
 	}
 
@@ -162,19 +162,26 @@ export default class ArrayNode extends BaseNode {
 	 *
 	 * @name clean
 	 * @access public
-	 * @param value The value to validate
-	 * @return the cleaned array values
+	 * @param value The value to clean
+	 * @returns the cleaned array values
 	 */
-	clean(value?: any[], level?: string[]) {
-
-		// If the value is null and it's optional, return as is
-		if((value === undefined || value === null) && this._optional) {
-			return null;
-		}
+	clean(value?: any[] | null, level?: string[]): any[] | null {
 
 		// If level is not passed
 		if(level === undefined) {
 			level = [];
+		}
+
+		// If the value is null
+		if(value === undefined || value === null) {
+
+			// If it's optional, return as null
+			if(this._optional) {
+				return null;
+			}
+
+			// Missing value
+			throw new NodeException([[level.join('.'), 'missing']]);
 		}
 
 		// If the value is not an Array
@@ -221,9 +228,9 @@ export default class ArrayNode extends BaseNode {
 	 * @access public
 	 * @param minimum The minimum value
 	 * @param maximum The maximum value
-	 * @return The currently set min / max
+	 * @returns The currently set min / max on get, or void for set
 	 */
-	minmax(minimum?: number | string | null, maximum?: number | string | null): void | object {
+	minmax(minimum?: number | string | null, maximum?: number | string | null): object | void {
 
 		// If neither minimum or max is set, this is a getter
 		if(minimum === undefined && maximum === undefined) {
@@ -386,19 +393,27 @@ export default class ArrayNode extends BaseNode {
 	 * @param level Names of parents to this node
 	 * @returns if the value is valid or not
 	 */
-	valid(value: any[], level?: string[]) {
-
-		// Reset validation failures
-		this.validationFailures = [];
+	valid(value: any[] | null, level?: string[]): boolean {
 
 		// If level is not passed
 		if(level === undefined) {
 			level = [];
 		}
 
-		// If the value is null and it's optional, we're good
-		if(value == null && this._optional) {
-			return true;
+		// Reset validation failures
+		this.validationFailures = [];
+
+		// If the value is null
+		if(value == null) {
+
+			// If it's optional, we're good
+			if(this._optional) {
+				return true;
+			}
+
+			// Invalid value
+			this.validationFailures.push([level.join('.'), 'missing']);
+			return false;
 		}
 
 		// If the value isn't an array

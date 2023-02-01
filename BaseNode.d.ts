@@ -86,7 +86,7 @@ export default class BaseNode {
      *
      * @name toJSON
      * @access public
-     * @returnsString
+     * @returns json reprentation of the node
      */
     toJSON(): string;
     /**
@@ -97,7 +97,7 @@ export default class BaseNode {
      *
      * @name toObject
      * @access public
-     * @returnsObject
+     * @returns the node as an object that can be represented by json
      */
     toObject(): Record<string, any>;
     /**

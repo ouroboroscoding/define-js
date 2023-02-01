@@ -172,7 +172,7 @@ export default class BaseNode {
      *
      * @name toJSON
      * @access public
-     * @returnsString
+     * @returns json reprentation of the node
      */
     toJSON() {
         return JSON.stringify(this.toObject());
@@ -185,7 +185,7 @@ export default class BaseNode {
      *
      * @name toObject
      * @access public
-     * @returnsObject
+     * @returns the node as an object that can be represented by json
      */
     toObject() {
         // Init the object we will return

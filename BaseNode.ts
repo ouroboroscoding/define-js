@@ -206,9 +206,9 @@ export default class BaseNode {
 	 *
 	 * @name toJSON
 	 * @access public
-	 * @returnsString
+	 * @returns json reprentation of the node
 	 */
-	toJSON() {
+	toJSON(): string {
 		return JSON.stringify(this.toObject());
 	}
 
@@ -220,9 +220,9 @@ export default class BaseNode {
 	 *
 	 * @name toObject
 	 * @access public
-	 * @returnsObject
+	 * @returns the node as an object that can be represented by json
 	 */
-	toObject() {
+	toObject(): Record<string, any> {
 
 		// Init the object we will return
 		const oRet: Record<string, any> = {};
