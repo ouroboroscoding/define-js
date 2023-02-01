@@ -5,13 +5,13 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-	  "build": "tslint -p tsconfig.json && tsc",
-	  "clean": "rm index.js index.d.ts",
-	  "test": "echo \"Error: no test specified.\" && exit 1"
+    "build": "tslint -p tsconfig.json && tsc",
+    "clean": "rm index.js index.d.ts",
+    "test": "echo \"Error: no test specified.\" && exit 1"
   },
   "repository": {
-	  "type": "git",
-	  "url": "git+https://github.com/ouroboroscoding/define-js.git"
+    "type": "git",
+    "url": "git+https://github.com/ouroboroscoding/define-js.git"
   },
   "keywords": [
     "data",
@@ -21,8 +21,8 @@
     "format",
     "store",
     "structure",
-	  "validate",
-	  "validation"
+    "validate",
+    "validation"
   ],
   "author": "Chris Nasr <chris@ouroboroscoding.com>",
   "license": "MIT",
@@ -30,9 +30,9 @@
     "url": "https://github.com/ouroboroscoding/define-js/issues"
   },
   "devDependencies": {
-	  "tslint": "^6.1.3",
-	  "tslint-config-prettier": "^1.18.0",
-	  "typescript": "^4.8.3"
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.8.3"
   },
   "dependencies": {
     "@ouroboros/tools": "^0.3.0",
