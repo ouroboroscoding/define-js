@@ -20,7 +20,7 @@ import BaseDecimal from 'decimal.js';
  * @access public
  */
 export default class Decimal {
-    points: number;
+    points: number | null;
     value: BaseDecimal;
     /**
      * Constructor
@@ -30,7 +30,7 @@ export default class Decimal {
      * @name Decimal
      * @access public
      * @param val A value to convert to a decimal
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     constructor(v: BaseDecimal.Value | string);
     /**
@@ -43,9 +43,9 @@ export default class Decimal {
      * @static
      * @param The base class instance
      * @param p Optional points
-     * @returnsDecimal
+     * @returns a new Decimal
      */
-    static _fromDecimalJS(v: BaseDecimal.Value | string, p: number): Decimal;
+    static _fromDecimalJS(v: BaseDecimal.Value | string, p: number | null): Decimal;
     /**
      * Absolute
      *
@@ -53,7 +53,7 @@ export default class Decimal {
      *
      * @name abs
      * @access public
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     abs(): Decimal;
     /**
@@ -63,7 +63,7 @@ export default class Decimal {
      *
      * @name absoluteValue
      * @access public
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     absoluteValue(): Decimal;
     /**
@@ -73,9 +73,19 @@ export default class Decimal {
      *
      * @name ceil
      * @access public
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     ceil(): Decimal;
+    /**
+     * Decimal Places
+     *
+     * Returns the current number of decimal points in the number
+     *
+     * @name decimalPlaces
+     * @access public
+     * @returns The number of decimal points in the value
+     */
+    decimalPlaces(): number;
     /**
      * Floor
      *
@@ -83,7 +93,7 @@ export default class Decimal {
      *
      * @name floor
      * @access public
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     floor(): Decimal;
     /**
@@ -94,7 +104,7 @@ export default class Decimal {
      * @name minus
      * @access public
      * @param x The value to subtract from the current instance
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     minus(x: BaseDecimal.Value): Decimal;
     /**
@@ -104,7 +114,7 @@ export default class Decimal {
      *
      * @name negated
      * @access public
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     negated(): Decimal;
     /**
@@ -115,7 +125,7 @@ export default class Decimal {
      * @name plus
      * @access public
      * @param x The value to add to the current instance
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     plus(x: BaseDecimal.Value): Decimal;
     /**
@@ -125,7 +135,7 @@ export default class Decimal {
      *
      * @name round
      * @access public
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     round(): Decimal;
     /**
@@ -136,7 +146,7 @@ export default class Decimal {
      * @name times
      * @access public
      * @param x The value to multiply the current instance by
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     times(x: BaseDecimal.Value): Decimal;
     /**
@@ -148,9 +158,20 @@ export default class Decimal {
      * @access public
      * @param dp Decimal places
      * @param rm Rounding mode
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     toDecimalPlaces(dp: number, rm?: BaseDecimal.Rounding): Decimal;
+    /**
+     * To Fixed
+     *
+     * Returns a decimal with a fixed number of decimal points
+     *
+     * @name toFixed
+     * @access public
+     * @param p The number of decimal points
+     * @returns a string
+     */
+    toFixed(p: number): string;
     /**
      * To Nearest
      *
@@ -159,7 +180,7 @@ export default class Decimal {
      * @name toNearest
      * @access public
      * @param x Value to check multiples of
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     toNearest(x: BaseDecimal.Value): Decimal;
     /**
@@ -171,7 +192,7 @@ export default class Decimal {
      * @access public
      * @param sd Significant digits
      * @param rm Rounding mode
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     toSignificantDigits(sd: number, rm?: BaseDecimal.Rounding): Decimal;
     /**
@@ -191,7 +212,7 @@ export default class Decimal {
      *
      * @name truncated
      * @access public
-     * @returnsDecimal
+     * @returns a new Decimal
      */
     truncated(): Decimal;
 }

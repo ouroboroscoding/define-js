@@ -28,7 +28,7 @@ import types from './types';
 export default class Decimal {
 
 	// Points
-	points: number;
+	points: number | null;
 
 	// Decimal value
 	value: BaseDecimal;
@@ -41,15 +41,15 @@ export default class Decimal {
 	 * @name Decimal
 	 * @access public
 	 * @param val A value to convert to a decimal
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	constructor(v: BaseDecimal.Value | string) {
 
 		// Call the parent constructor
 		this.value = new BaseDecimal(v);
 
-		// Assume no decimal points
-		this.points = 0;
+		// Assume no points
+		this.points = null;
 
 		// If the original value is a string
 		if(typeof v === 'string') {
@@ -57,7 +57,7 @@ export default class Decimal {
 			// Attempt to get the fraction
 			const a = types.regex.decimal.exec(v);
 
-			// If it exists and there's a trailing 0
+			// If it exists, get the length of the string
 			if(a && a[1]) {
 				this.points = a[1].length;
 			}
@@ -74,9 +74,9 @@ export default class Decimal {
 	 * @static
 	 * @param The base class instance
 	 * @param p Optional points
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
-	static _fromDecimalJS(v: BaseDecimal.Value | string, p: number): Decimal {
+	static _fromDecimalJS(v: BaseDecimal.Value | string, p: number | null): Decimal {
 
 		// Generate a new instance
 		const d = new Decimal(v);
@@ -95,7 +95,7 @@ export default class Decimal {
 	 *
 	 * @name abs
 	 * @access public
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	abs(): Decimal {
 
@@ -113,7 +113,7 @@ export default class Decimal {
 	 *
 	 * @name absoluteValue
 	 * @access public
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	absoluteValue() {
 
@@ -131,7 +131,7 @@ export default class Decimal {
 	 *
 	 * @name ceil
 	 * @access public
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	ceil() {
 
@@ -143,13 +143,26 @@ export default class Decimal {
 	}
 
 	/**
+	 * Decimal Places
+	 *
+	 * Returns the current number of decimal points in the number
+	 *
+	 * @name decimalPlaces
+	 * @access public
+	 * @returns The number of decimal points in the value
+	 */
+	decimalPlaces(): number {
+		return this.value.decimalPlaces();
+	}
+
+	/**
 	 * Floor
 	 *
 	 * Round fractions down
 	 *
 	 * @name floor
 	 * @access public
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	floor() {
 
@@ -168,7 +181,7 @@ export default class Decimal {
 	 * @name minus
 	 * @access public
 	 * @param x The value to subtract from the current instance
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	minus(x: BaseDecimal.Value): Decimal {
 
@@ -186,7 +199,7 @@ export default class Decimal {
 	 *
 	 * @name negated
 	 * @access public
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	negated(): Decimal {
 
@@ -205,7 +218,7 @@ export default class Decimal {
 	 * @name plus
 	 * @access public
 	 * @param x The value to add to the current instance
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	plus(x: BaseDecimal.Value): Decimal {
 
@@ -223,7 +236,7 @@ export default class Decimal {
 	 *
 	 * @name round
 	 * @access public
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	round(): Decimal {
 
@@ -242,7 +255,7 @@ export default class Decimal {
 	 * @name times
 	 * @access public
 	 * @param x The value to multiply the current instance by
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	times(x: BaseDecimal.Value): Decimal {
 
@@ -262,7 +275,7 @@ export default class Decimal {
 	 * @access public
 	 * @param dp Decimal places
 	 * @param rm Rounding mode
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	toDecimalPlaces(dp: number, rm?: BaseDecimal.Rounding): Decimal {
 
@@ -276,6 +289,20 @@ export default class Decimal {
 	}
 
 	/**
+	 * To Fixed
+	 *
+	 * Returns a decimal with a fixed number of decimal points
+	 *
+	 * @name toFixed
+	 * @access public
+	 * @param p The number of decimal points
+	 * @returns a string
+	 */
+	toFixed(p: number): string {
+		return this.value.toFixed(p);
+	}
+
+	/**
 	 * To Nearest
 	 *
 	 * Rounds to the nearest multiple of x
@@ -283,7 +310,7 @@ export default class Decimal {
 	 * @name toNearest
 	 * @access public
 	 * @param x Value to check multiples of
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	toNearest(x: BaseDecimal.Value): Decimal {
 
@@ -303,7 +330,7 @@ export default class Decimal {
 	 * @access public
 	 * @param sd Significant digits
 	 * @param rm Rounding mode
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	toSignificantDigits(sd: number, rm?: BaseDecimal.Rounding): Decimal {
 
@@ -331,7 +358,7 @@ export default class Decimal {
 		let s = this.value.toString();
 
 		// If we have decimal points
-		if(this.points) {
+		if(this.points !== null) {
 
 			// Get the current number from the return
 			const a = types.regex.decimal.exec(s);
@@ -377,7 +404,7 @@ export default class Decimal {
 	 *
 	 * @name truncated
 	 * @access public
-	 * @returnsDecimal
+	 * @returns a new Decimal
 	 */
 	truncated(): Decimal {
 
