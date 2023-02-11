@@ -196,7 +196,7 @@ export default class Parent extends BaseNode {
         }
         else {
             if (def === undefined) {
-                throw new Error('No such node in the Parent');
+                throw new Error(`No such node in the Parent "${key}"`);
             }
             else {
                 return def;

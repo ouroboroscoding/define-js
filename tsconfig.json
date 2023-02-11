@@ -12,5 +12,9 @@
 		"target": "esnext"
 	},
 	"include": ["./"],
-	"exclude": []
+	"exclude": [
+		"babel.config.cjs",
+		"jest.config.ts",
+		"tests/*"
+	]
 }

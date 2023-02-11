@@ -197,7 +197,7 @@ export default class OptionsNode extends BaseNode {
 			return this._nodes[index];
 		} else {
 			if(def === undefined) {
-				throw new Error('No such node in the Parent');
+				throw new Error(`No such node in the Options: ${index}`);
 			} else {
 				return def;
 			}
