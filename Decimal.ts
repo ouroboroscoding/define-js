@@ -10,6 +10,9 @@
  * @created 2019-03-03
  */
 
+// Ouroboros modules
+import { cloneAddClass } from '@ouroboros/tools';
+
 // Import modules
 import BaseDecimal from 'decimal.js';
 
@@ -156,6 +159,25 @@ export default class Decimal {
 	}
 
 	/**
+	 * Equals
+	 *
+	 * Compares the instance value to the passed value and returns if the former
+	 * is the same as the latter
+	 *
+	 * @name equals
+	 * @access public
+	 * @param v The value to compare against
+	 * @returns true if the instance value is the same as the passed value
+	 */
+	equals(v: BaseDecimal | Decimal) {
+		if(v instanceof Decimal) {
+			return this.value.equals(v.value);
+		} else {
+			return this.value.equals(v);
+		}
+	}
+
+	/**
 	 * Floor
 	 *
 	 * Round fractions down
@@ -171,6 +193,44 @@ export default class Decimal {
 			this.value.floor(),
 			this.points
 		);
+	}
+
+	/**
+	 * Greater Than
+	 *
+	 * Compares the instance value to the passed value and returns if the former
+	 * is greater than the latter
+	 *
+	 * @name greaterThan
+	 * @access public
+	 * @param v The value to compare against
+	 * @returns true if the instance value is greater than the passed value
+	 */
+	greaterThan(v: BaseDecimal | Decimal): boolean {
+		if(v instanceof Decimal) {
+			return this.value.greaterThan(v.value);
+		} else {
+			return this.value.greaterThan(v);
+		}
+	}
+
+	/**
+	 * Less Than
+	 *
+	 * Compares the instance value to the passed value and returns if the former
+	 * is less than the latter
+	 *
+	 * @name lessThan
+	 * @access public
+	 * @param v The value to compare against
+	 * @returns true if the instance value is less than the passed value
+	 */
+	lessThan(v: BaseDecimal | Decimal): boolean {
+		if(v instanceof Decimal) {
+			return this.value.lessThan(v.value);
+		} else {
+			return this.value.lessThan(v);
+		}
 	}
 
 	/**
@@ -415,3 +475,7 @@ export default class Decimal {
 		);
 	}
 }
+
+// Add the Decimal class to clone so that it doesn't get mangled when Nodes
+//	clone the structure
+cloneAddClass(Decimal);

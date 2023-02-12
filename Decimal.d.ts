@@ -87,6 +87,18 @@ export default class Decimal {
      */
     decimalPlaces(): number;
     /**
+     * Equals
+     *
+     * Compares the instance value to the passed value and returns if the former
+     * is the same as the latter
+     *
+     * @name equals
+     * @access public
+     * @param v The value to compare against
+     * @returns true if the instance value is the same as the passed value
+     */
+    equals(v: BaseDecimal | Decimal): boolean;
+    /**
      * Floor
      *
      * Round fractions down
@@ -96,6 +108,30 @@ export default class Decimal {
      * @returns a new Decimal
      */
     floor(): Decimal;
+    /**
+     * Greater Than
+     *
+     * Compares the instance value to the passed value and returns if the former
+     * is greater than the latter
+     *
+     * @name greaterThan
+     * @access public
+     * @param v The value to compare against
+     * @returns true if the instance value is greater than the passed value
+     */
+    greaterThan(v: BaseDecimal | Decimal): boolean;
+    /**
+     * Less Than
+     *
+     * Compares the instance value to the passed value and returns if the former
+     * is less than the latter
+     *
+     * @name lessThan
+     * @access public
+     * @param v The value to compare against
+     * @returns true if the instance value is less than the passed value
+     */
+    lessThan(v: BaseDecimal | Decimal): boolean;
     /**
      * Minus
      *
