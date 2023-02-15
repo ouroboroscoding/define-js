@@ -640,7 +640,7 @@ export default class Node extends BaseNode {
 	 * @param array opts				An array of valid values for the node when setting
 	 * @return void|Array
 	 */
-	options(opts: any[]): any[] | null | void {
+	options(opts?: any[]): any[] | null | void {
 
 		// If opts aren't set, this is a getter
 		if(opts === undefined) {

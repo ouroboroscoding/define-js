@@ -9,7 +9,7 @@
  * @created 2019-03-01
  */
 // Ouroboros modules
-import { isObject } from '@ouroboros/tools';
+import { clone, isObject } from '@ouroboros/tools';
 // Import modules
 import types from './types';
 /**
@@ -151,7 +151,7 @@ export default class BaseNode {
         // If the value is not set, this is a getter
         if (value === undefined) {
             // Return the value or null
-            return (name in this._special) ? this._special[name] : null;
+            return (name in this._special) ? clone(this._special[name]) : null;
         }
         // Else, this is a setter
         else {

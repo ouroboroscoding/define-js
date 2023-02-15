@@ -1,4 +1,5 @@
 export { default as ArrayNode } from './ArrayNode';
+export { default as BaseNode } from './BaseNode';
 export { default as Decimal } from './Decimal';
 export { default as HashNode } from './HashNode';
 export { default as Node } from './Node';
