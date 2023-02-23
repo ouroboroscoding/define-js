@@ -1,10 +1,10 @@
 import { describe, expect, test } from '@jest/globals';
-import { OptionsNode } from '../';
+import { Options } from '../src/';
 
 describe('Options Valid', () => {
 
 	// Create the Options instance
-	const oOption = new OptionsNode([
+	const oOption = new Options([
 		{__type__: 'uint'},
 		{__type__: 'string', '__options__': ['hello', 'there']}
 	]);

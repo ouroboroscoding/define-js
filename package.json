@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "A system for defining and validating data regardless of data store",
   "type": "module",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "build": "tslint -p tsconfig.json && tsc",
-    "clean": "rm index.js index.d.ts",
+    "clean": "rm src/*.js src/*.d.ts",
     "test": "jest"
   },
   "repository": {

@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { Decimal, Node } from '../';
+import { Decimal, Node } from '../src/';
 
 // Test 'base64' Nodes
 describe('base64', () => {

@@ -1,10 +1,10 @@
 import { describe, expect, test } from '@jest/globals';
-import { HashNode } from '../';
+import { Hash } from '../src/';
 
 describe('Hash of Hashes', () => {
 
 	// Create a hash of hashes
-	const oHash = new HashNode({
+	const oHash = new Hash({
 		__hash__: 'string',
 		__type__: {
 			__hash__: 'string',

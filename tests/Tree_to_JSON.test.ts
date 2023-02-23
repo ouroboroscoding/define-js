@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { Tree } from '../';
+import { Tree } from '../src/';
 
 describe('Tree to JSON', () => {
 

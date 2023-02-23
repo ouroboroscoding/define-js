@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { Node } from '../';
+import { Node } from '../src/';
 
 // Test 'string' Nodes
 describe('string one', () => {

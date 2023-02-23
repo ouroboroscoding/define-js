@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { Parent, Tree } from '../';
+import { Parent, Tree } from '../src/';
 
 describe('Tree Valid', () => {
 

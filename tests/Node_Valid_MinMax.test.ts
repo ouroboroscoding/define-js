@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { Decimal, Node } from '../';
+import { Decimal, Node } from '../src/';
 
 // Test 'date' Nodes
 describe('date', () => {

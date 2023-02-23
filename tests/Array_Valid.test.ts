@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { ArrayNode } from '../';
+import { ArrayNode } from '../src/';
 
 describe('Unique Arrays', () => {
 
