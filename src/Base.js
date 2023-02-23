@@ -216,7 +216,7 @@ export default class Base {
      */
     special(name, value) {
         // Check the name is a string
-        if (typeof name === 'string') {
+        if (typeof name !== 'string') {
             throw new Error('name must be a string');
         }
         // Check the name is valid
