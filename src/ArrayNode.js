@@ -10,13 +10,13 @@
 // Ouroboros modules
 import { clone, combine, isInteger, isObject } from '@ouroboros/tools';
 // Import node modules
-import BaseNode from './BaseNode';
+import Base from './Base';
 import Child from './Child';
 // Import exceptions
 import NodeException from './NodeException';
 // Import helpers
+import constants from './constants.js';
 import { strToInt } from './helpers';
-import types from './types.js';
 /**
  * Array Node
  *
@@ -24,9 +24,9 @@ import types from './types.js';
  *
  * @name ArrayNode
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class ArrayNode extends BaseNode {
+export default class ArrayNode extends Base {
     // The minimum amount of values required
     _minimum;
     // The maximum amount of values allowed
@@ -92,7 +92,7 @@ export default class ArrayNode extends BaseNode {
         this._minimum = null;
         this._maximum = null;
         // If the type is invalid
-        if (types.array.indexOf(oDetails.__array__.type) === -1) {
+        if (constants.array.indexOf(oDetails.__array__.type) === -1) {
             throw new Error('"' + String(oDetails.__array__.type) + '" is not a valid type for __array__');
         }
         // Else, store it
@@ -204,7 +204,7 @@ export default class ArrayNode extends BaseNode {
             // If it's a string
             if (typeof minimum === 'string') {
                 // If it's not a valid string
-                if (!types.regex.int.test(minimum)) {
+                if (!constants.regex.int.test(minimum)) {
                     throw new Error('"minimum" of array must be an integer');
                 }
                 // Else, convert it to a number
@@ -230,7 +230,7 @@ export default class ArrayNode extends BaseNode {
             // If it's a string
             if (typeof maximum === 'string') {
                 // If it's not a valid string
-                if (!types.regex.int.test(maximum)) {
+                if (!constants.regex.int.test(maximum)) {
                     throw new Error('"maximum" of array must be an integer');
                 }
                 // Else, convert it to a number

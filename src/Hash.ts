@@ -2,7 +2,7 @@
  * Hash Node
  *
  * Represents a node which is actually a dynamic object containing defined keys
- * (Node) and values (BaseNode)
+ * (Node) and values (Base)
  *
  * @author Chris Nasr <chris@ouroboroscoding.com>
  * @copyright Ouroboros Coding Inc.
@@ -13,13 +13,10 @@
 import { clone, combine, isObject } from '@ouroboros/tools';
 
 // Import modules
-import BaseNode from './BaseNode';
+import Base from './Base';
 import Child from './Child';
 import Node from './Node';
 import NodeException from './NodeException';
-
-// Import helpers
-import types from './types';
 
 /**
  * Hash Node
@@ -28,15 +25,15 @@ import types from './types';
  *
  * @name HashNode
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class HashNode extends BaseNode {
+export default class HashNode extends Base {
 
 	// The key node
 	_key: Node;
 
 	// The value node
-	_node: BaseNode;
+	_node: Base;
 
 	/**
 	 * Constructor
@@ -125,7 +122,7 @@ export default class HashNode extends BaseNode {
 	 * @access public
 	 * @returns the instance of the value node
 	 */
-	child(): BaseNode {
+	child(): Base {
 		return this._node;
 	}
 

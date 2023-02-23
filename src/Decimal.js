@@ -14,7 +14,7 @@ import { cloneAddClass } from '@ouroboros/tools';
 // Import modules
 import BaseDecimal from 'decimal.js';
 // Import helpers
-import types from './types';
+import constants from './constants';
 /**
  * Decimal
  *
@@ -47,7 +47,7 @@ export default class Decimal {
         // If the original value is a string
         if (typeof v === 'string') {
             // Attempt to get the fraction
-            const a = types.regex.decimal.exec(v);
+            const a = constants.regex.decimal.exec(v);
             // If it exists, get the length of the string
             if (a && a[1]) {
                 this.points = a[1].length;
@@ -339,7 +339,7 @@ export default class Decimal {
         // If we have decimal points
         if (this.points !== null) {
             // Get the current number from the return
-            const a = types.regex.decimal.exec(s);
+            const a = constants.regex.decimal.exec(s);
             // If it exists
             if (a) {
                 // Start with the same length

@@ -7,7 +7,8 @@
  * @copyright Ouroboros Coding Inc.
  * @created 2019-03-01
  */
-import BaseNode from './BaseNode';
+import Base from './Base';
+import { MinMax } from './Types';
 /**
  * Array Node
  *
@@ -15,13 +16,13 @@ import BaseNode from './BaseNode';
  *
  * @name ArrayNode
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class ArrayNode extends BaseNode {
+export default class ArrayNode extends Base {
     _minimum: number | null;
     _maximum: number | null;
     _type: 'unique' | 'duplicates';
-    _node: BaseNode;
+    _node: Base;
     /**
      * Constructor
      *
@@ -44,7 +45,7 @@ export default class ArrayNode extends BaseNode {
      * @access public
      * @returns the instance of the elements node
      */
-    child(): BaseNode;
+    child(): Base;
     /**
      * Clean
      *
@@ -69,7 +70,7 @@ export default class ArrayNode extends BaseNode {
      * @param maximum The maximum value
      * @returns The currently set min / max on get, or void for set
      */
-    minmax(minimum?: number | string | null, maximum?: number | string | null): object | void;
+    minmax(minimum?: number | string | null, maximum?: number | string | null): MinMax | void;
     /**
      * To Object
      *

@@ -12,7 +12,7 @@
 import { isObject } from "@ouroboros/tools";
 
 // Local modules
-import BaseNode from "./BaseNode";
+import Base from "./Base";
 
 // Private variables
 let _classes: Record<string, any> = {};

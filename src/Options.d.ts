@@ -1,5 +1,5 @@
 /**
- * Options Node
+ * Options
  *
  * Represents a node which can have several different types of values/Nodes and
  * still be valid
@@ -8,15 +8,15 @@
  * @copyright Ouroboros Coding Inc.
  * @created 2019-03-01
  */
-import BaseNode from './BaseNode';
-export default class OptionsNode extends BaseNode {
-    _nodes: BaseNode[];
+import Base from './Base';
+export default class Options extends Base {
+    _nodes: Base[];
     /**
      * Constructor
      *
      * Initialises the instance
      *
-     * @name OptionsNode
+     * @name Options
      * @access public
      * @param details Node structure
      * @param extend Extend the base node structure, if false, don't copy the
@@ -34,7 +34,7 @@ export default class OptionsNode extends BaseNode {
      */
     [Symbol.iterator](): {
         next: () => {
-            value: BaseNode;
+            value: Base;
             done: boolean;
         } | {
             done: boolean;
@@ -64,7 +64,7 @@ export default class OptionsNode extends BaseNode {
      * @param def If set, returned when a node is not found
      * @returns the child node associated with the index
      */
-    get(index: number, def?: BaseNode): BaseNode;
+    get(index: number, def?: Base): Base;
     /**
      * Length (get)
      *

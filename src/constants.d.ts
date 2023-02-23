@@ -1,5 +1,5 @@
 /**
- * Types
+ * Constants
  *
  * Holds various strings and regexes for valid types
  *
@@ -7,7 +7,7 @@
  * @copyright Ouroboros Coding Inc.
  * @created 2019-03-01
  */
-declare const types: {
+declare const constants: {
     array: string[];
     nodes: string[];
     special: {
@@ -31,4 +31,4 @@ declare const types: {
         uuid4: RegExp;
     };
 };
-export default types;
+export default constants;

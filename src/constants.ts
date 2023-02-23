@@ -1,5 +1,5 @@
 /**
- * Types
+ * Constants
  *
  * Holds various strings and regexes for valid types
  *
@@ -12,7 +12,7 @@
 const specialSyntax = '[a-z0-9_-]+';
 
 // Export the values
-const types = {
+const constants = {
 	array: ['unique', 'duplicates'],
 	nodes: [
 		'any', 'base64', 'bool', 'date', 'datetime', 'decimal', 'float', 'int',
@@ -43,4 +43,4 @@ const types = {
 		uuid4:		/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$/
 	}
 };
-export default types;
+export default constants;

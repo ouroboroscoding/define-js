@@ -7,7 +7,8 @@
  * @copyright Ouroboros Coding Inc.
  * @created 2019-03-01
  */
-import BaseNode from './BaseNode';
+import Base from './Base';
+import { MinMax } from './Types';
 /**
  * Node
  *
@@ -15,9 +16,9 @@ import BaseNode from './BaseNode';
  *
  * @name Node
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class Node extends BaseNode {
+export default class Node extends Base {
     _regex: RegExp | null;
     _minimum: any;
     _maximum: any;
@@ -59,7 +60,7 @@ export default class Node extends BaseNode {
      * @param maximum The maximum value
      * @return the current min / max on get, or void for set
      */
-    minmax(minimum?: any, maximum?: any): object | void;
+    minmax(minimum?: any, maximum?: any): MinMax | void;
     /**
      * Options
      *
@@ -70,7 +71,7 @@ export default class Node extends BaseNode {
      * @param array opts				An array of valid values for the node when setting
      * @return void|Array
      */
-    options(opts: any[]): any[] | null | void;
+    options(opts?: any[]): any[] | null | void;
     /**
      * Regex
      *

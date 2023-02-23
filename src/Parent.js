@@ -11,11 +11,11 @@
 // Ouroboros modules
 import { clone, combine, isObject } from '@ouroboros/tools';
 // Import modules
-import BaseNode from './BaseNode';
+import Base from './Base';
 import Child from './Child';
 import NodeException from './NodeException';
 // Import helpers
-import types from './types';
+import constants from './constants';
 /**
  * Parent
  *
@@ -23,9 +23,9 @@ import types from './types';
  *
  * @name Parent
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class Parent extends BaseNode {
+export default class Parent extends Base {
     // Children nodes by name
     _nodes;
     // List of requirements by node
@@ -81,7 +81,7 @@ export default class Parent extends BaseNode {
         // Go through the keys in the details
         for (const k of Object.keys(oDetails)) {
             // If key is standard
-            if (types.standard.test(k)) {
+            if (constants.standard.test(k)) {
                 // Add the child
                 this._nodes[k] = Child.create(oDetails[k]);
             }

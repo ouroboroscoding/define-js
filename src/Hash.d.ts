@@ -2,13 +2,13 @@
  * Hash Node
  *
  * Represents a node which is actually a dynamic object containing defined keys
- * (Node) and values (BaseNode)
+ * (Node) and values (Base)
  *
  * @author Chris Nasr <chris@ouroboroscoding.com>
  * @copyright Ouroboros Coding Inc.
  * @created 2019-03-01
  */
-import BaseNode from './BaseNode';
+import Base from './Base';
 import Node from './Node';
 /**
  * Hash Node
@@ -17,11 +17,11 @@ import Node from './Node';
  *
  * @name HashNode
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class HashNode extends BaseNode {
+export default class HashNode extends Base {
     _key: Node;
-    _node: BaseNode;
+    _node: Base;
     /**
      * Constructor
      *
@@ -44,7 +44,7 @@ export default class HashNode extends BaseNode {
      * @access public
      * @returns the instance of the value node
      */
-    child(): BaseNode;
+    child(): Base;
     /**
      * Clean
      *

@@ -8,7 +8,7 @@
  * @copyright Ouroboros Coding Inc.
  * @created 2019-03-01
  */
-import BaseNode from './BaseNode';
+import Base from './Base';
 /**
  * Parent
  *
@@ -16,10 +16,10 @@ import BaseNode from './BaseNode';
  *
  * @name Parent
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class Parent extends BaseNode {
-    _nodes: Record<string, BaseNode>;
+export default class Parent extends Base {
+    _nodes: Record<string, Base>;
     _requires: Record<string, string[]>;
     /**
      * Constructor
@@ -85,7 +85,7 @@ export default class Parent extends BaseNode {
      * @param def If set, returned when a node is not found
      * @return the child node associated with the key
      */
-    get(key: string, def?: BaseNode): BaseNode;
+    get(key: string, def?: Base): Base;
     /**
      * Keys
      *

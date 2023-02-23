@@ -13,12 +13,12 @@
 import { clone, combine, isObject } from '@ouroboros/tools';
 
 // Import modules
-import BaseNode from './BaseNode';
+import Base from './Base';
 import Child from './Child';
 import NodeException from './NodeException';
 
 // Import helpers
-import types from './types';
+import constants from './constants';
 
 /**
  * Parent
@@ -27,12 +27,12 @@ import types from './types';
  *
  * @name Parent
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class Parent extends BaseNode {
+export default class Parent extends Base {
 
 	// Children nodes by name
-	_nodes: Record<string, BaseNode>;
+	_nodes: Record<string, Base>;
 
 	// List of requirements by node
 	_requires: Record<string, string[]>;
@@ -102,7 +102,7 @@ export default class Parent extends BaseNode {
 		for(const k of Object.keys(oDetails)) {
 
 			// If key is standard
-			if(types.standard.test(k)) {
+			if(constants.standard.test(k)) {
 
 				// Add the child
 				this._nodes[k] = Child.create(oDetails[k]);
@@ -227,7 +227,7 @@ export default class Parent extends BaseNode {
 	 * @param def If set, returned when a node is not found
 	 * @return the child node associated with the key
 	 */
-	get(key: string, def?: BaseNode): BaseNode {
+	get(key: string, def?: Base): Base {
 		if(key in this._nodes) {
 			return this._nodes[key];
 		} else {

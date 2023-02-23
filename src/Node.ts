@@ -12,13 +12,16 @@
 import { clone, combine, isInteger, isObject } from '@ouroboros/tools';
 
 // Import modules
-import BaseNode from './BaseNode';
+import Base from './Base';
 import Child from './Child';
 import Decimal from './Decimal';
 
 // Import helpers
 import { compareIPs, dateTimeToStr, dateToStr, strToInt } from './helpers';
-import types from'./types';
+import constants from './constants';
+
+// Types
+import { MinMax } from './Types';
 
 /**
  * Node
@@ -27,9 +30,9 @@ import types from'./types';
  *
  * @name Node
  * @access public
- * @extends BaseNode
+ * @extends Base
  */
-export default class Node extends BaseNode {
+export default class Node extends Base {
 
 	// A regular expression defining a valid value
 	_regex: RegExp | null;
@@ -139,7 +142,7 @@ export default class Node extends BaseNode {
 		}
 
 		// If the type is not valid
-		if(types.nodes.indexOf(oDetails.__type__) === -1) {
+		if(constants.nodes.indexOf(oDetails.__type__) === -1) {
 			throw new Error('invalid "__type__" in details');
 		}
 
@@ -149,7 +152,7 @@ export default class Node extends BaseNode {
 		// Store the type and remove it from the details
 		this._type = oDetails.__type__;
 
-		// Init the value types
+		// Init the value constants
 		this._regex = null;
 		this._options = null;
 		this._minimum = null;
@@ -375,7 +378,7 @@ export default class Node extends BaseNode {
 	 * @param maximum The maximum value
 	 * @return the current min / max on get, or void for set
 	 */
-	minmax(minimum?: any, maximum?: any): object | void {
+	minmax(minimum?: any, maximum?: any): MinMax | void {
 
 		// If neither min or max is set, this is a getter
 		if(minimum === undefined && maximum === undefined) {
@@ -397,7 +400,7 @@ export default class Node extends BaseNode {
 			if(['date', 'datetime', 'ip', 'time'].indexOf(this._type) !== -1) {
 
 				// Make sure the value is valid for the type
-				if(typeof minimum !== 'string' || !types.regex[this._type as keyof typeof types.regex].test(minimum)) {
+				if(typeof minimum !== 'string' || !constants.regex[this._type as keyof typeof constants.regex].test(minimum)) {
 					throw new Error('"__minimum__" is not valid for the current type: "' + this._type + '"');
 				}
 			}
@@ -410,7 +413,7 @@ export default class Node extends BaseNode {
 				if(!isInteger(minimum)) {
 
 					// If it's a valid representation of an integer
-					if(typeof minimum === 'string' && types.regex.int.test(minimum)) {
+					if(typeof minimum === 'string' && constants.regex.int.test(minimum)) {
 						minimum = strToInt(minimum);
 					}
 
@@ -439,7 +442,7 @@ export default class Node extends BaseNode {
 				}
 
 				// If it's a valid representation of a decimal
-				else if(typeof minimum === 'string' && types.regex.decimal.test(minimum)) {
+				else if(typeof minimum === 'string' && constants.regex.decimal.test(minimum)) {
 					minimum = new Decimal(minimum);
 				}
 
@@ -458,7 +461,7 @@ export default class Node extends BaseNode {
 				}
 
 				// If it's a valid representation of a float
-				else if(typeof minimum === 'string' && types.regex.decimal.test(minimum)) {
+				else if(typeof minimum === 'string' && constants.regex.decimal.test(minimum)) {
 					minimum = parseFloat(minimum);
 				}
 
@@ -477,7 +480,7 @@ export default class Node extends BaseNode {
 				}
 
 				// If it's a valid representation of a decimal
-				else if(typeof minimum === 'string' && types.regex.price.test(minimum)) {
+				else if(typeof minimum === 'string' && constants.regex.price.test(minimum)) {
 					minimum = new Decimal(minimum);
 				}
 
@@ -508,7 +511,7 @@ export default class Node extends BaseNode {
 			if(['date', 'datetime', 'ip', 'time'].indexOf(this._type) !== -1) {
 
 				// Make sure the value is valid for the type
-				if(typeof maximum !== 'string' || !types.regex[this._type as keyof typeof types.regex].test(maximum)) {
+				if(typeof maximum !== 'string' || !constants.regex[this._type as keyof typeof constants.regex].test(maximum)) {
 					throw new Error('"__maximum__" is not valid for the current type: "' + this._type + '"');
 				}
 			}
@@ -521,7 +524,7 @@ export default class Node extends BaseNode {
 				if(!isInteger(maximum)) {
 
 					// If it's a valid representation of an integer
-					if(typeof maximum === 'string' && types.regex.int.test(maximum)) {
+					if(typeof maximum === 'string' && constants.regex.int.test(maximum)) {
 						maximum	= strToInt(maximum);
 					}
 
@@ -550,7 +553,7 @@ export default class Node extends BaseNode {
 				}
 
 				// If it's a valid representation of a decimal
-				else if(typeof maximum === 'string' && types.regex.decimal.test(maximum)) {
+				else if(typeof maximum === 'string' && constants.regex.decimal.test(maximum)) {
 					maximum = new Decimal(maximum);
 				}
 
@@ -569,7 +572,7 @@ export default class Node extends BaseNode {
 				}
 
 				// If it's a valid representation of a float
-				else if(typeof maximum === 'string' && types.regex.decimal.test(maximum)) {
+				else if(typeof maximum === 'string' && constants.regex.decimal.test(maximum)) {
 					maximum = parseFloat(maximum);
 				}
 
@@ -588,7 +591,7 @@ export default class Node extends BaseNode {
 				}
 
 				// If it's a valid representation of a decimal
-				else if(typeof maximum === 'string' && types.regex.price.test(maximum)) {
+				else if(typeof maximum === 'string' && constants.regex.price.test(maximum)) {
 					maximum = new Decimal(maximum);
 				}
 
@@ -674,7 +677,7 @@ export default class Node extends BaseNode {
 
 					// If the value is not a string or doesn't match its regex,
 					//	throw an error
-					if(typeof opts[i] !== 'string' || !types.regex[this._type as keyof typeof types.regex].test(opts[i])) {
+					if(typeof opts[i] !== 'string' || !constants.regex[this._type as keyof typeof constants.regex].test(opts[i])) {
 						throw new Error('"__options__[' + i + ']" is not valid for "' + this._type + '"');
 					}
 				}
@@ -718,7 +721,7 @@ export default class Node extends BaseNode {
 					if(!isInteger(opts[i])) {
 
 						// If it's a valid representation of an integer
-						if(typeof opts[i] === 'string' && types.regex.int.test(opts[i])) {
+						if(typeof opts[i] === 'string' && constants.regex.int.test(opts[i])) {
 							opts[i]	= strToInt(opts[i]);
 						}
 
@@ -743,7 +746,7 @@ export default class Node extends BaseNode {
 					}
 
 					// Else if it's not a valid price representation
-					else if(typeof opts[i] !== 'string' || !types.regex.price.test(opts[i])) {
+					else if(typeof opts[i] !== 'string' || !constants.regex.price.test(opts[i])) {
 						throw new Error('"__options__[' + i + ']" not a valid price');
 					}
 
@@ -941,7 +944,7 @@ export default class Node extends BaseNode {
 			}
 
 			// If there's no match
-			if(!types.regex[this._type as keyof typeof types.regex].test(value)) {
+			if(!constants.regex[this._type as keyof typeof constants.regex].test(value)) {
 				this.validationFailures.push([level.join('.'), 'failed regex (internal)']);
 				return false;
 			}
@@ -983,7 +986,7 @@ export default class Node extends BaseNode {
 			if(!isInteger(value)) {
 
 				// And it's a valid representation of an int
-				if(typeof value === 'string' && types.regex.int.test(value)) {
+				if(typeof value === 'string' && constants.regex.int.test(value)) {
 					value = strToInt(value);
 				}
 
@@ -1112,7 +1115,7 @@ export default class Node extends BaseNode {
 			else if(typeof value === 'string') {
 
 				// If it's an invalid representation
-				if(!types.regex.decimal.test(value)) {
+				if(!constants.regex.decimal.test(value)) {
 					this.validationFailures.push([level.join('.'), 'failed regex (internal)']);
 					return false;
 				}
@@ -1179,7 +1182,7 @@ export default class Node extends BaseNode {
 				if(typeof value === 'string') {
 
 					// If it doesn't match the regex
-					if(!types.regex.price.test(value)) {
+					if(!constants.regex.price.test(value)) {
 						this.validationFailures.push([level.join('.'), 'failed regex (internal)']);
 						return false;
 					}

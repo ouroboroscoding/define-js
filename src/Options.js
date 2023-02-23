@@ -1,5 +1,5 @@
 /**
- * Options Node
+ * Options
  *
  * Represents a node which can have several different types of values/Nodes and
  * still be valid
@@ -11,11 +11,11 @@
 // Ouroboros modules
 import { clone, merge } from '@ouroboros/tools';
 // Import modules
-import BaseNode from './BaseNode';
+import Base from './Base';
 import Child from './Child';
 import NodeException from './NodeException';
 // Node class
-export default class OptionsNode extends BaseNode {
+export default class Options extends Base {
     // List of valid nodes
     _nodes;
     /**
@@ -23,7 +23,7 @@ export default class OptionsNode extends BaseNode {
      *
      * Initialises the instance
      *
-     * @name OptionsNode
+     * @name Options
      * @access public
      * @param details Node structure
      * @param extend Extend the base node structure, if false, don't copy the
@@ -242,4 +242,4 @@ export default class OptionsNode extends BaseNode {
     }
 }
 // Register with Child
-Child.register('options', OptionsNode);
+Child.register('options', Options);

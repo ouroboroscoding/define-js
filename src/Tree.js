@@ -13,7 +13,7 @@ import { clone, combine, isObject, opop } from '@ouroboros/tools';
 // Import modules
 import Parent from './Parent';
 // Import helpers
-import types from './types';
+import constants from './constants';
 /**
  * Tree
  *
@@ -74,7 +74,7 @@ export default class Tree extends Parent {
             throw new Error('"__name__" not found in details');
         }
         // If the name is not valid
-        if (!types.standard.test(details.__name__)) {
+        if (!constants.standard.test(details.__name__)) {
             throw new Error('"__name__" not a valid value for Tree');
         }
         // If for some reason the array flag is set, remove it

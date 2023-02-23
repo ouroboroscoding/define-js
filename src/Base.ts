@@ -13,17 +13,17 @@
 import { clone, isObject } from '@ouroboros/tools';
 
 // Import modules
-import types from './types';
+import constants from './constants';
 
 /**
  * Base Node
  *
  * The base class for most Node types
  *
- * @name BaseNode
+ * @name Base
  * @access public
  */
-export default class BaseNode {
+export default class Base {
 
 	// The name of the class of node
 	_class: string;
@@ -42,11 +42,11 @@ export default class BaseNode {
 	 *
 	 * Initialises the instance
 	 *
-	 * @name BaseNode
+	 * @name Base
 	 * @access public
 	 * @param details Node structure
 	 * @param className The type of Node
-	 * @returns BaseNode
+	 * @returns Base
 	 */
 	constructor(details: Record<string, any>, className: string) {
 
@@ -88,12 +88,12 @@ export default class BaseNode {
 		for(const k in details) {
 
 			// If the key is used by the child
-			if(types.special.reserved.indexOf(k) !== -1) {
+			if(constants.special.reserved.indexOf(k) !== -1) {
 				continue;
 			}
 
 			// If the current key is special
-			const lMatch = types.special.key.exec(k);
+			const lMatch = constants.special.key.exec(k);
 			if(lMatch) {
 
 				// Store it with the other specials then remove it
@@ -127,7 +127,7 @@ export default class BaseNode {
 	 * @returns the cleaned value
 	 */
 	clean(value?: any, level?: string[]): any {
-		throw new Error('Must extend "clean" to extend "BaseNode"');
+		throw new Error('Must extend "clean" to extend "Base"');
 	}
 
 	/**
@@ -174,8 +174,8 @@ export default class BaseNode {
 		}
 
 		// Check the name is valid
-		if(!types.special.name.test(name)) {
-			throw new Error('special name must match "' + types.special.syntax + '"');
+		if(!constants.special.name.test(name)) {
+			throw new Error('special name must match "' + constants.special.syntax + '"');
 		}
 
 		// If the value is not set, this is a getter
@@ -252,7 +252,7 @@ export default class BaseNode {
 	 * @returns if the value is valid or not
 	 */
 	valid(value?: any, level?: string[]): any {
-		throw new Error('Must extend "valid" to extend "BaseNode"');
+		throw new Error('Must extend "valid" to extend "Base"');
 	}
 
 }

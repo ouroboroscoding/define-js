@@ -13,10 +13,10 @@
  *
  * The base class for most Node types
  *
- * @name BaseNode
+ * @name Base
  * @access public
  */
-export default class BaseNode {
+export default class Base {
     _class: string;
     _optional: boolean;
     _special: Record<string, any>;
@@ -26,11 +26,11 @@ export default class BaseNode {
      *
      * Initialises the instance
      *
-     * @name BaseNode
+     * @name Base
      * @access public
      * @param details Node structure
      * @param className The type of Node
-     * @returns BaseNode
+     * @returns Base
      */
     constructor(details: Record<string, any>, className: string);
     /**
