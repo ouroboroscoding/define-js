@@ -14,7 +14,6 @@ import { clone, combine, isObject } from '@ouroboros/tools';
 
 // Import modules
 import Base from './Base';
-import Child from './Child';
 import NodeException from './NodeException';
 
 // Import helpers
@@ -105,7 +104,7 @@ export default class Parent extends Base {
 			if(constants.standard.test(k)) {
 
 				// Add the child
-				this._nodes[k] = Child.create(oDetails[k]);
+				this._nodes[k] = Base.create(oDetails[k]);
 			}
 		}
 
@@ -426,5 +425,5 @@ export default class Parent extends Base {
 	}
 }
 
-// Register with Child
-Child.register('parent', Parent);
+// Register with Base
+Base.register('parent', Parent);

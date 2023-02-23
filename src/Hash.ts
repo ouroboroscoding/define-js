@@ -14,7 +14,6 @@ import { clone, combine, isObject } from '@ouroboros/tools';
 
 // Import modules
 import Base from './Base';
-import Child from './Child';
 import Node from './Node';
 import NodeException from './NodeException';
 
@@ -110,7 +109,7 @@ export default class HashNode extends Base {
 		delete oDetails.__hash__;
 
 		// Store the child
-		this._node = Child.create(oDetails);
+		this._node = Base.create(oDetails);
 	}
 
 	/**
@@ -295,5 +294,5 @@ export default class HashNode extends Base {
 	}
 }
 
-// Register with Child
-Child.register('hash', HashNode);
+// Register with Base
+Base.register('hash', HashNode);

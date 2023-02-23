@@ -22,6 +22,33 @@ export default class Base {
     _special: Record<string, any>;
     validationFailures: string[][];
     /**
+     * Create
+     *
+     * Figure out the child node type necessary and create an instance of it
+     *
+     * @name create
+     * @access public
+     * @static
+     * @param details An object describing a data point
+     * @returns any
+     */
+    static create(details: Record<string, any>): any;
+    /**
+     * Register
+     *
+     * Registers the classes that can be children because we can't require them
+     * in this file as webpack can't handle file A that requires file B that
+     * requires file A
+     *
+     * @name register
+     * @access public
+     * @static
+     * @param name Name / value object of all classes to register, or the name of
+     * 				the constructor that will be added
+     * @param constructor The class to associated with the given name
+     */
+    static register(name: object | string, constructor?: any): void;
+    /**
      * Constructor
      *
      * Initialises the instance

@@ -11,7 +11,6 @@
 import { clone, combine, isInteger, isObject } from '@ouroboros/tools';
 // Import modules
 import Base from './Base';
-import Child from './Child';
 import Decimal from './Decimal';
 // Import helpers
 import { compareIPs, dateTimeToStr, dateToStr, strToInt } from './helpers';
@@ -1050,5 +1049,5 @@ export default class Node extends Base {
         return true;
     }
 }
-// Register with Child
-Child.register('node', Node);
+// Register with Base
+Base.register('node', Node);

@@ -13,7 +13,6 @@ import { clone, combine, isInteger, isObject, min } from '@ouroboros/tools';
 
 // Import node modules
 import Base from './Base';
-import Child from './Child';
 
 // Import exceptions
 import NodeException from './NodeException';
@@ -141,7 +140,7 @@ export default class ArrayNode extends Base {
 		delete oDetails.__array__;
 
 		// Store the child
-		this._node = Child.create(oDetails);
+		this._node = Base.create(oDetails);
 	}
 
 	/**
@@ -490,5 +489,5 @@ export default class ArrayNode extends Base {
 	}
 }
 
-// Register with Child
-Child.register('array', ArrayNode);
+// Register with Base
+Base.register('array', ArrayNode);

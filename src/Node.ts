@@ -13,7 +13,6 @@ import { clone, combine, isInteger, isObject } from '@ouroboros/tools';
 
 // Import modules
 import Base from './Base';
-import Child from './Child';
 import Decimal from './Decimal';
 
 // Import helpers
@@ -1314,5 +1313,5 @@ export default class Node extends Base {
 	}
 }
 
-// Register with Child
-Child.register('node', Node);
+// Register with Base
+Base.register('node', Node);

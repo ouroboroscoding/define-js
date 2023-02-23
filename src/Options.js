@@ -12,7 +12,6 @@
 import { clone, merge } from '@ouroboros/tools';
 // Import modules
 import Base from './Base';
-import Child from './Child';
 import NodeException from './NodeException';
 // Node class
 export default class Options extends Base {
@@ -80,7 +79,7 @@ export default class Options extends Base {
         // Go through each element in the list
         for (let i = 0; i < details.length; ++i) {
             // Add the child
-            this._nodes.push(Child.create(details[i]));
+            this._nodes.push(Base.create(details[i]));
             // If the child is not optional, than the entire object can't be
             //	optional
             if (!this._nodes[i].optional()) {
@@ -241,5 +240,5 @@ export default class Options extends Base {
         return false;
     }
 }
-// Register with Child
-Child.register('options', Options);
+// Register with Base
+Base.register('options', Options);
