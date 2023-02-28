@@ -9,7 +9,8 @@
  */
 
 // Ouroboros modules
-import { clone, combine, isInteger, isObject, min } from '@ouroboros/tools';
+import clone from '@ouroboros/clone';
+import { combine, isInteger, isObject, min } from '@ouroboros/tools';
 
 // Import node modules
 import Base from './Base';
