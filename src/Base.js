@@ -9,7 +9,8 @@
  * @created 2019-03-01
  */
 // Ouroboros modules
-import { clone, isObject } from '@ouroboros/tools';
+import clone from '@ouroboros/clone';
+import { isObject } from '@ouroboros/tools';
 // Import modules
 import constants from './constants';
 // Private variables

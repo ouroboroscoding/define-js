@@ -11,7 +11,7 @@
  */
 
 // Ouroboros modules
-import { cloneAddClass } from '@ouroboros/tools';
+import { Clone } from '@ouroboros/clone';
 
 // Import modules
 import BaseDecimal from 'decimal.js';
@@ -28,7 +28,7 @@ import constants from './constants';
  * @name Decimal
  * @access public
  */
-export default class Decimal {
+export default class Decimal extends Clone {
 
 	// Points
 	points: number | null;
@@ -47,6 +47,9 @@ export default class Decimal {
 	 * @returns a new Decimal
 	 */
 	constructor(v: BaseDecimal.Value | string) {
+
+		// Call the Clone constructor
+		super();
 
 		// Call the parent constructor
 		this.value = new BaseDecimal(v);
@@ -143,6 +146,27 @@ export default class Decimal {
 			this.value.ceil(),
 			this.points
 		);
+	}
+
+	/**
+	 * Clone
+	 *
+	 * Called by the clone library to copy the instance
+	 *
+	 * @name clone
+	 * @access public
+	 * @returns a copy of the instance
+	 */
+	clone() {
+
+		// Create a new decimal instance
+		const oRet = new Decimal(this.value);
+
+		// Add the points
+		oRet.points = this.points
+
+		// Return it
+		return oRet;
 	}
 
 	/**
@@ -475,7 +499,3 @@ export default class Decimal {
 		);
 	}
 }
-
-// Add the Decimal class to clone so that it doesn't get mangled when Nodes
-//	clone the structure
-cloneAddClass(Decimal);

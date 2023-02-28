@@ -10,7 +10,8 @@
  */
 
 // Ouroboros modules
-import { clone, combine, merge } from '@ouroboros/tools';
+import clone from '@ouroboros/clone';
+import { merge } from '@ouroboros/tools';
 
 // Import modules
 import Base from './Base';

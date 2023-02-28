@@ -10,7 +10,8 @@
  */
 
 // Ouroboros modules
-import { clone, combine, isObject, opop } from '@ouroboros/tools';
+import clone from '@ouroboros/clone';
+import { combine, isObject, opop } from '@ouroboros/tools';
 
 // Import modules
 import Parent from './Parent';
