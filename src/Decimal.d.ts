@@ -9,6 +9,7 @@
  * @copyright Ouroboros Coding Inc.
  * @created 2019-03-03
  */
+import { Clone } from '@ouroboros/clone';
 import BaseDecimal from 'decimal.js';
 /**
  * Decimal
@@ -19,7 +20,7 @@ import BaseDecimal from 'decimal.js';
  * @name Decimal
  * @access public
  */
-export default class Decimal {
+export default class Decimal extends Clone {
     points: number | null;
     value: BaseDecimal;
     /**
@@ -76,6 +77,16 @@ export default class Decimal {
      * @returns a new Decimal
      */
     ceil(): Decimal;
+    /**
+     * Clone
+     *
+     * Called by the clone library to copy the instance
+     *
+     * @name clone
+     * @access public
+     * @returns a copy of the instance
+     */
+    clone(): Decimal;
     /**
      * Decimal Places
      *

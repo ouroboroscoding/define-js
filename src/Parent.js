@@ -9,7 +9,8 @@
  * @created 2019-03-01
  */
 // Ouroboros modules
-import { clone, combine, isObject } from '@ouroboros/tools';
+import clone from '@ouroboros/clone';
+import { combine, isObject } from '@ouroboros/tools';
 // Import modules
 import Base from './Base';
 import NodeException from './NodeException';
