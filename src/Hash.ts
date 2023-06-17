@@ -70,7 +70,7 @@ export default class HashNode extends Base {
 			oDetails = clone(details);
 		}
 
-		// Else, if we have an extend value
+		// Else, we have an extend value
 		else {
 
 			// If it's an object
@@ -158,7 +158,7 @@ export default class HashNode extends Base {
 
 		// If the value is not a valid Object
 		if(!isObject(value)) {
-			throw new NodeException([[level.join('.'), 'not a valid Object']]);
+			throw new NodeException([[level.join('.'), 'not a valid object']]);
 		}
 
 		// Go through each key
@@ -261,7 +261,7 @@ export default class HashNode extends Base {
 
 		// If the value isn't an Object
 		if(!isObject(value)) {
-			this.validationFailures.push([level.join('.'), String(value)]);
+			this.validationFailures.push([level.join('.'), 'not a valid object']);
 			return false;
 		}
 
