@@ -43,7 +43,7 @@ export default class Options extends Base {
             //	object
             aDetails = clone(details);
         }
-        // Else, if we have an extend value
+        // Else, we have an extend value
         else {
             // If it's an array
             if (Array.isArray(extend)) {

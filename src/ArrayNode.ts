@@ -83,7 +83,7 @@ export default class ArrayNode extends Base {
 			oDetails = clone(details);
 		}
 
-		// Else, if we have an extend value
+		// Else, we have an extend value
 		else {
 
 			// If it's an object
@@ -189,7 +189,7 @@ export default class ArrayNode extends Base {
 
 		// If the value is not an Array
 		if(!Array.isArray(value)) {
-			throw new NodeException([[level.join('.'), 'not a valid Array']]);
+			throw new NodeException([[level.join('.'), 'not an array']]);
 		}
 
 		// Go through each element
@@ -421,7 +421,7 @@ export default class ArrayNode extends Base {
 
 		// If the value isn't an array
 		if(!Array.isArray(value)) {
-			this.validationFailures.push([level.join('.'), String(value)]);
+			this.validationFailures.push([level.join('.'), 'not an array']);
 			return false;
 		}
 

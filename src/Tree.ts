@@ -63,7 +63,7 @@ export default class Tree extends Parent {
 			oDetails = clone(details);
 		}
 
-		// Else, if we have an extend value
+		// Else, we have an extend value
 		else {
 
 			// If it's an object

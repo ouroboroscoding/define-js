@@ -79,7 +79,7 @@ export default class Node extends Base {
                 //	object
                 oDetails = clone(details);
             }
-            // Else, if we have an extend value
+            // Else, we have an extend value
             else {
                 // If it's an object
                 if (isObject(extend)) {
@@ -98,7 +98,7 @@ export default class Node extends Base {
                 }
             }
         }
-        // Else, we got invalid data
+        // Else, we got invalid details
         else {
             throw new Error('"details" must be an Object or a String');
         }
@@ -112,7 +112,7 @@ export default class Node extends Base {
         }
         // Call the parent constructor
         super(oDetails, 'Node');
-        // Store the type and remove it from the details
+        // Store the type
         this._type = oDetails.__type__;
         // Init the value constants
         this._regex = null;
@@ -599,6 +599,10 @@ export default class Node extends Base {
                         opts[i] = String(opts[i]);
                     }
                 }
+                // Else, we have no validation for the type
+                else {
+                    throw new Error(`can not set __options__ for "${this._type}"`);
+                }
                 // If it's already in the list, raise an error
                 if (aOpts.indexOf(opts[i]) !== -1) {
                     throw new Error('"__options__[' + i + '] is a duplicate');
@@ -750,7 +754,7 @@ export default class Node extends Base {
             }
             // If there's no match
             if (!constants.regex[this._type].test(value)) {
-                this.validationFailures.push([level.join('.'), 'failed regex (internal)']);
+                this.validationFailures.push([level.join('.'), 'invalid']);
                 return false;
             }
             // If we're checking an IP
@@ -944,7 +948,7 @@ export default class Node extends Base {
                 if (typeof value === 'string') {
                     // If it doesn't match the regex
                     if (!constants.regex.price.test(value)) {
-                        this.validationFailures.push([level.join('.'), 'failed regex (internal)']);
+                        this.validationFailures.push([level.join('.'), 'invalid']);
                         return false;
                     }
                     // Convert it to a Decimal
@@ -1002,7 +1006,7 @@ export default class Node extends Base {
             if (this._regex) {
                 // If it doesn't match the regex
                 if (!this._regex.test(value)) {
-                    this.validationFailures.push([level.join('.'), 'failed regex (custom)']);
+                    this.validationFailures.push([level.join('.'), 'invalid']);
                     return false;
                 }
             }
