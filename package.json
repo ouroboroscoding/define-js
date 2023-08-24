@@ -1,6 +1,6 @@
 {
   "name": "@ouroboros/define",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A system for defining and validating data regardless of data store",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@ouroboros/clone": "^1.0.1",
-    "@ouroboros/tools": "^0.4.1",
+    "@ouroboros/tools": "^0.5.1",
     "decimal.js": "^10.4.3"
   }
 }

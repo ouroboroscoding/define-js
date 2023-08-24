@@ -95,7 +95,7 @@ export default class Base {
      * @static
      * @param name Name / value object of all classes to register, or the name of
      * 				the constructor that will be added
-     * @param constructor The class to associated with the given name
+     * @param constructor The class to associate with the given name
      */
     static register(name, constructor) {
         if (typeof name === 'object') {
