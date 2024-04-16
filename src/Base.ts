@@ -52,7 +52,7 @@ export default class Base {
 	 * @param details An object describing a data point
 	 * @return any
 	 */
-	static create(details: Record<string, any>): any {
+	static create(details: Record<string, any>): Base {
 
 		// If it's an array, create a list of options
 		if(Array.isArray(details)) {
@@ -198,7 +198,7 @@ export default class Base {
 	 *
 	 * @name class
 	 * @access public
-	 * @returnstring
+	 * @return string
 	 */
 	class(): string {
 		return this._class;
@@ -225,7 +225,7 @@ export default class Base {
 	 *
 	 * @name optional
 	 * @param value The value to set
-	 * @returnbool | void
+	 * @return bool | void
 	 */
 	optional(value?: boolean): boolean | void {
 
@@ -252,9 +252,9 @@ export default class Base {
 	 * @param name The name of the value to either set or get
 	 * @param value The value to set, must be something that can be
 	 * 				converted directly to JSON
-	 * @returnmixed|void
+	 * @return mixed | void
 	 */
-	special(name: string, value?: any) {
+	special(name: string, value?: any): any | void {
 
 		// Check the name is a string
 		if(typeof name !== 'string') {

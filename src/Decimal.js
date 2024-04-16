@@ -36,7 +36,7 @@ export default class Decimal extends Clone {
      *
      * @name Decimal
      * @access public
-     * @param val A value to convert to a decimal
+     * @param v A value to convert to a decimal
      * @return a new Decimal
      */
     constructor(v) {
@@ -64,7 +64,7 @@ export default class Decimal extends Clone {
      * @name _fromDecimalJS
      * @access public
      * @static
-     * @param The base class instance
+     * @param v The base class instance
      * @param p Optional points
      * @return a new Decimal
      */

@@ -26,7 +26,6 @@ export default class NodeException extends Error {
      * @name NodeException
      * @access public
      * @param errors The list of errors found
-     * @param message The error message
      * @return NodeException
      */
     constructor(errors) {

@@ -32,7 +32,7 @@ export default class Base {
      * @param details An object describing a data point
      * @return any
      */
-    static create(details: Record<string, any>): any;
+    static create(details: Record<string, any>): Base;
     /**
      * Register
      *
@@ -67,7 +67,7 @@ export default class Base {
      *
      * @name class
      * @access public
-     * @returnstring
+     * @return string
      */
     class(): string;
     /**
@@ -88,7 +88,7 @@ export default class Base {
      *
      * @name optional
      * @param value The value to set
-     * @returnbool | void
+     * @return bool | void
      */
     optional(value?: boolean): boolean | void;
     /**
@@ -103,9 +103,9 @@ export default class Base {
      * @param name The name of the value to either set or get
      * @param value The value to set, must be something that can be
      * 				converted directly to JSON
-     * @returnmixed|void
+     * @return mixed | void
      */
-    special(name: string, value?: any): any;
+    special(name: string, value?: any): any | void;
     /**
      * To JSON
      *

@@ -164,7 +164,7 @@ export default class Base {
      *
      * @name class
      * @access public
-     * @returnstring
+     * @return string
      */
     class() {
         return this._class;
@@ -189,7 +189,7 @@ export default class Base {
      *
      * @name optional
      * @param value The value to set
-     * @returnbool | void
+     * @return bool | void
      */
     optional(value) {
         // If the value is not set, this is a getter
@@ -213,7 +213,7 @@ export default class Base {
      * @param name The name of the value to either set or get
      * @param value The value to set, must be something that can be
      * 				converted directly to JSON
-     * @returnmixed|void
+     * @return mixed | void
      */
     special(name, value) {
         // Check the name is a string

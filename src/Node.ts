@@ -58,7 +58,7 @@ export default class Node extends Base {
 	 * @access public
 	 * @param details Node structure
 	 * @param extend Extend the base node structure, if false, don't copy the
-	 * 					base node structure details
+	 *  base node structure details
 	 * @return a new instance
 	 */
 	constructor(details: Record<string, any> | string, extend?: Record<string, any> | false) {
@@ -370,7 +370,7 @@ export default class Node extends Base {
 	 * Min/Max
 	 *
 	 * Sets or gets the minimum and/or maximum values for the Node. For
-	 * getting, returns {"minimum":mixed,"maximum":mixed}
+	 * getting, returns { "minimum": mixed, "maximum": mixed }
 	 *
 	 * @name minmax
 	 * @access public
@@ -640,8 +640,8 @@ export default class Node extends Base {
 	 *
 	 * @name options
 	 * @access public
-	 * @param array opts				An array of valid values for the node when setting
-	 * @return void|Array
+	 * @param opts An array of valid values for the node when setting
+	 * @return void | Array
 	 */
 	options(opts?: any[]): any[] | null | void {
 
@@ -791,8 +791,8 @@ export default class Node extends Base {
 	 *
 	 * @name regex
 	 * @access public
-	 * @param str|RegExp regex		A regular expression string or object
-	 * @return void|RegExp
+	 * @param regex A regular expression string or object
+	 * @return void | RegExp
 	 */
 	regex(regex?: RegExp | string): RegExp | null | void {
 
@@ -833,6 +833,7 @@ export default class Node extends Base {
 	 * constructing it
 	 *
 	 * @name toObject
+	 * @access public
 	 * @return an object that can be converted to JSON
 	 */
 	toObject(): Record<string, any> {
@@ -879,6 +880,7 @@ export default class Node extends Base {
 	 * Returns the type of Node this is
 	 *
 	 * @name type
+	 * @access public
 	 * @return the type of node
 	 */
 	type(): string {
