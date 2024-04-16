@@ -33,7 +33,7 @@ export default class Options extends Base {
 	 * @param details Node structure
 	 * @param extend Extend the base node structure, if false, don't copy the
 	 * 					base node structure details
-	 * @returns a new instance
+	 * @return a new instance
 	 */
 	constructor(details: Record<string, any>[], extend?: Record<string, any>[] | false) {
 
@@ -118,7 +118,7 @@ export default class Options extends Base {
 	 * Allows the instance to be used as an iterator
 	 *
 	 * @name [Symbol.iterator]
-	 * @returns Object
+	 * @return Object
 	 */
 	[Symbol.iterator]() {
 
@@ -144,7 +144,7 @@ export default class Options extends Base {
 	 * @name clean
 	 * @access public
 	 * @param value The value to clean
-	 * @returns the cleaned object values
+	 * @return the cleaned object values
 	 */
 	clean(value?: any | null, level?: string[]): Record<any, any> | null {
 
@@ -189,7 +189,7 @@ export default class Options extends Base {
 	 * @access public
 	 * @param index The index associated with the node to get
 	 * @param def If set, returned when a node is not found
-	 * @returns the child node associated with the index
+	 * @return the child node associated with the index
 	 */
 	get(index: number, def?: Base): Base {
 		if(this._nodes[index] !== undefined) {
@@ -210,7 +210,7 @@ export default class Options extends Base {
 	 *
 	 * @name length
 	 * @access public
-	 * @returns the number of nodes available as options
+	 * @return the number of nodes available as options
 	 */
 	get length(): number {
 		return this._nodes.length;
@@ -224,7 +224,7 @@ export default class Options extends Base {
 	 *
 	 * @name toObject
 	 * @access public
-	 * @returns a list of the available nodes as objects that can be represented
+	 * @return a list of the available nodes as objects that can be represented
 	 * 			by json
 	 */
 	toObject(): Record<string, any>[] {
@@ -250,7 +250,7 @@ export default class Options extends Base {
 	 * @access public
 	 * @param value The value to validate
 	 * @param level Names of parents to this node
-	 * @returns if the value is valid or not
+	 * @return if the value is valid or not
 	 */
 	valid(value: any | null, level?: string[]): boolean {
 

@@ -36,8 +36,8 @@ export default class Decimal extends Clone {
      *
      * @name Decimal
      * @access public
-     * @param val A value to convert to a decimal
-     * @returns a new Decimal
+     * @param v A value to convert to a decimal
+     * @return a new Decimal
      */
     constructor(v) {
         // Call the Clone constructor
@@ -64,9 +64,9 @@ export default class Decimal extends Clone {
      * @name _fromDecimalJS
      * @access public
      * @static
-     * @param The base class instance
+     * @param v The base class instance
      * @param p Optional points
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     static _fromDecimalJS(v, p) {
         // Generate a new instance
@@ -83,7 +83,7 @@ export default class Decimal extends Clone {
      *
      * @name abs
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     abs() {
         // Call the parent method and convert it
@@ -96,7 +96,7 @@ export default class Decimal extends Clone {
      *
      * @name absoluteValue
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     absoluteValue() {
         // Call the parent method and convert it
@@ -109,7 +109,7 @@ export default class Decimal extends Clone {
      *
      * @name ceil
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     ceil() {
         // Call the parent method and convert it
@@ -122,7 +122,7 @@ export default class Decimal extends Clone {
      *
      * @name clone
      * @access public
-     * @returns a copy of the instance
+     * @return a copy of the instance
      */
     clone() {
         // Create a new decimal instance
@@ -139,7 +139,7 @@ export default class Decimal extends Clone {
      *
      * @name decimalPlaces
      * @access public
-     * @returns The number of decimal points in the value
+     * @return The number of decimal points in the value
      */
     decimalPlaces() {
         return this.value.decimalPlaces();
@@ -153,7 +153,7 @@ export default class Decimal extends Clone {
      * @name equals
      * @access public
      * @param v The value to compare against
-     * @returns true if the instance value is the same as the passed value
+     * @return true if the instance value is the same as the passed value
      */
     equals(v) {
         if (v instanceof Decimal) {
@@ -170,7 +170,7 @@ export default class Decimal extends Clone {
      *
      * @name floor
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     floor() {
         // Call the parent method and convert it
@@ -185,7 +185,7 @@ export default class Decimal extends Clone {
      * @name greaterThan
      * @access public
      * @param v The value to compare against
-     * @returns true if the instance value is greater than the passed value
+     * @return true if the instance value is greater than the passed value
      */
     greaterThan(v) {
         if (v instanceof Decimal) {
@@ -204,7 +204,7 @@ export default class Decimal extends Clone {
      * @name lessThan
      * @access public
      * @param v The value to compare against
-     * @returns true if the instance value is less than the passed value
+     * @return true if the instance value is less than the passed value
      */
     lessThan(v) {
         if (v instanceof Decimal) {
@@ -222,7 +222,7 @@ export default class Decimal extends Clone {
      * @name minus
      * @access public
      * @param x The value to subtract from the current instance
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     minus(x) {
         // Call the parent constructor and convert it
@@ -235,7 +235,7 @@ export default class Decimal extends Clone {
      *
      * @name negated
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     negated() {
         // Call the parent constructor and convert it
@@ -249,7 +249,7 @@ export default class Decimal extends Clone {
      * @name plus
      * @access public
      * @param x The value to add to the current instance
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     plus(x) {
         // Call the parent constructor and convert it
@@ -262,7 +262,7 @@ export default class Decimal extends Clone {
      *
      * @name round
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     round() {
         // Call the parent constructor and convert it
@@ -276,7 +276,7 @@ export default class Decimal extends Clone {
      * @name times
      * @access public
      * @param x The value to multiply the current instance by
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     times(x) {
         // Call the parent constructor and convert it
@@ -291,7 +291,7 @@ export default class Decimal extends Clone {
      * @access public
      * @param dp Decimal places
      * @param rm Rounding mode
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     toDecimalPlaces(dp, rm) {
         // Call the parent constructor and convert it
@@ -307,7 +307,7 @@ export default class Decimal extends Clone {
      * @name toFixed
      * @access public
      * @param p The number of decimal points
-     * @returns a string
+     * @return a string
      */
     toFixed(p) {
         return this.value.toFixed(p);
@@ -320,7 +320,7 @@ export default class Decimal extends Clone {
      * @name toNearest
      * @access public
      * @param x Value to check multiples of
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     toNearest(x) {
         // Call the parent constructor and convert it
@@ -335,7 +335,7 @@ export default class Decimal extends Clone {
      * @access public
      * @param sd Significant digits
      * @param rm Rounding mode
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     toSignificantDigits(sd, rm) {
         // Call the parent constructor and convert it
@@ -350,7 +350,7 @@ export default class Decimal extends Clone {
      *
      * @name toString
      * @access public
-     * @returns string
+     * @return string
      */
     toString() {
         // Call the parent
@@ -392,7 +392,7 @@ export default class Decimal extends Clone {
      *
      * @name truncated
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     truncated() {
         // Call the parent constructor and convert it

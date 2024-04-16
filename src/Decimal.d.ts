@@ -30,8 +30,8 @@ export default class Decimal extends Clone {
      *
      * @name Decimal
      * @access public
-     * @param val A value to convert to a decimal
-     * @returns a new Decimal
+     * @param v A value to convert to a decimal
+     * @return a new Decimal
      */
     constructor(v: BaseDecimal.Value | string);
     /**
@@ -42,9 +42,9 @@ export default class Decimal extends Clone {
      * @name _fromDecimalJS
      * @access public
      * @static
-     * @param The base class instance
+     * @param v The base class instance
      * @param p Optional points
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     static _fromDecimalJS(v: BaseDecimal.Value | string, p: number | null): Decimal;
     /**
@@ -54,7 +54,7 @@ export default class Decimal extends Clone {
      *
      * @name abs
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     abs(): Decimal;
     /**
@@ -64,7 +64,7 @@ export default class Decimal extends Clone {
      *
      * @name absoluteValue
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     absoluteValue(): Decimal;
     /**
@@ -74,7 +74,7 @@ export default class Decimal extends Clone {
      *
      * @name ceil
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     ceil(): Decimal;
     /**
@@ -84,7 +84,7 @@ export default class Decimal extends Clone {
      *
      * @name clone
      * @access public
-     * @returns a copy of the instance
+     * @return a copy of the instance
      */
     clone(): Decimal;
     /**
@@ -94,7 +94,7 @@ export default class Decimal extends Clone {
      *
      * @name decimalPlaces
      * @access public
-     * @returns The number of decimal points in the value
+     * @return The number of decimal points in the value
      */
     decimalPlaces(): number;
     /**
@@ -106,7 +106,7 @@ export default class Decimal extends Clone {
      * @name equals
      * @access public
      * @param v The value to compare against
-     * @returns true if the instance value is the same as the passed value
+     * @return true if the instance value is the same as the passed value
      */
     equals(v: BaseDecimal | Decimal): boolean;
     /**
@@ -116,7 +116,7 @@ export default class Decimal extends Clone {
      *
      * @name floor
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     floor(): Decimal;
     /**
@@ -128,7 +128,7 @@ export default class Decimal extends Clone {
      * @name greaterThan
      * @access public
      * @param v The value to compare against
-     * @returns true if the instance value is greater than the passed value
+     * @return true if the instance value is greater than the passed value
      */
     greaterThan(v: BaseDecimal | Decimal): boolean;
     /**
@@ -140,7 +140,7 @@ export default class Decimal extends Clone {
      * @name lessThan
      * @access public
      * @param v The value to compare against
-     * @returns true if the instance value is less than the passed value
+     * @return true if the instance value is less than the passed value
      */
     lessThan(v: BaseDecimal | Decimal): boolean;
     /**
@@ -151,7 +151,7 @@ export default class Decimal extends Clone {
      * @name minus
      * @access public
      * @param x The value to subtract from the current instance
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     minus(x: BaseDecimal.Value): Decimal;
     /**
@@ -161,7 +161,7 @@ export default class Decimal extends Clone {
      *
      * @name negated
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     negated(): Decimal;
     /**
@@ -172,7 +172,7 @@ export default class Decimal extends Clone {
      * @name plus
      * @access public
      * @param x The value to add to the current instance
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     plus(x: BaseDecimal.Value): Decimal;
     /**
@@ -182,7 +182,7 @@ export default class Decimal extends Clone {
      *
      * @name round
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     round(): Decimal;
     /**
@@ -193,7 +193,7 @@ export default class Decimal extends Clone {
      * @name times
      * @access public
      * @param x The value to multiply the current instance by
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     times(x: BaseDecimal.Value): Decimal;
     /**
@@ -205,7 +205,7 @@ export default class Decimal extends Clone {
      * @access public
      * @param dp Decimal places
      * @param rm Rounding mode
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     toDecimalPlaces(dp: number, rm?: BaseDecimal.Rounding): Decimal;
     /**
@@ -216,7 +216,7 @@ export default class Decimal extends Clone {
      * @name toFixed
      * @access public
      * @param p The number of decimal points
-     * @returns a string
+     * @return a string
      */
     toFixed(p: number): string;
     /**
@@ -227,7 +227,7 @@ export default class Decimal extends Clone {
      * @name toNearest
      * @access public
      * @param x Value to check multiples of
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     toNearest(x: BaseDecimal.Value): Decimal;
     /**
@@ -239,7 +239,7 @@ export default class Decimal extends Clone {
      * @access public
      * @param sd Significant digits
      * @param rm Rounding mode
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     toSignificantDigits(sd: number, rm?: BaseDecimal.Rounding): Decimal;
     /**
@@ -249,7 +249,7 @@ export default class Decimal extends Clone {
      *
      * @name toString
      * @access public
-     * @returns string
+     * @return string
      */
     toString(): string;
     /**
@@ -259,7 +259,7 @@ export default class Decimal extends Clone {
      *
      * @name truncated
      * @access public
-     * @returns a new Decimal
+     * @return a new Decimal
      */
     truncated(): Decimal;
 }
