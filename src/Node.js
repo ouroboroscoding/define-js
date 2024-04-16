@@ -46,7 +46,7 @@ export default class Node extends Base {
      * @param details Node structure
      * @param extend Extend the base node structure, if false, don't copy the
      * 					base node structure details
-     * @returns a new instance
+     * @return a new instance
      */
     constructor(details, extend) {
         // Init the details
@@ -145,7 +145,7 @@ export default class Node extends Base {
      * @name clean
      * @access public
      * @param value The value to clean
-     * @returns the cleaned value
+     * @return the cleaned value
      */
     clean(value, level) {
         // If the value is null and it's optional, return as is
@@ -657,7 +657,7 @@ export default class Node extends Base {
      * constructing it
      *
      * @name toObject
-     * @returns an object that can be converted to JSON
+     * @return an object that can be converted to JSON
      */
     toObject() {
         // Init the Object we will return
@@ -710,7 +710,7 @@ export default class Node extends Base {
      * @access public
      * @param value The value to validate
      * @param level Names of parents to this node
-     * @returns if the value is valid or not
+     * @return if the value is valid or not
      */
     valid(value, level) {
         // Reset validation failures

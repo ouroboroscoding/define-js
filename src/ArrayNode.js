@@ -45,7 +45,7 @@ export default class ArrayNode extends Base {
      * @param details Node structure
      * @param extend Extend the base node structure, if false, don't copy the
      * 					base node structure details
-     * @returns a new instance
+     * @return a new instance
      */
     constructor(details, extend) {
         // If the details are not an Object
@@ -115,7 +115,7 @@ export default class ArrayNode extends Base {
      *
      * @name child
      * @access public
-     * @returns the instance of the elements node
+     * @return the instance of the elements node
      */
     child() {
         return this._node;
@@ -129,7 +129,7 @@ export default class ArrayNode extends Base {
      * @name clean
      * @access public
      * @param value The value to clean
-     * @returns the cleaned array values
+     * @return the cleaned array values
      */
     clean(value, level) {
         // If level is not passed
@@ -185,7 +185,7 @@ export default class ArrayNode extends Base {
      * @access public
      * @param minimum The minimum value
      * @param maximum The maximum value
-     * @returns The currently set min / max on get, or void for set
+     * @return The currently set min / max on get, or void for set
      */
     minmax(minimum, maximum) {
         // If neither minimum or max is set, this is a getter
@@ -260,7 +260,7 @@ export default class ArrayNode extends Base {
      *
      * @name toObject
      * @access public
-     * @returns an object that can be converted to JSON
+     * @return an object that can be converted to JSON
      */
     toObject() {
         // Init the object we will return
@@ -304,7 +304,7 @@ export default class ArrayNode extends Base {
      *
      * @name type
      * @access public
-     * @returns string
+     * @return string
      */
     type() {
         return this._type;
@@ -318,7 +318,7 @@ export default class ArrayNode extends Base {
      * @access public
      * @param value The value to validate
      * @param level Names of parents to this node
-     * @returns if the value is valid or not
+     * @return if the value is valid or not
      */
     valid(value, level) {
         // If level is not passed

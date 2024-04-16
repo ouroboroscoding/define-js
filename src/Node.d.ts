@@ -34,7 +34,7 @@ export default class Node extends Base {
      * @param details Node structure
      * @param extend Extend the base node structure, if false, don't copy the
      * 					base node structure details
-     * @returns a new instance
+     * @return a new instance
      */
     constructor(details: Record<string, any> | string, extend?: Record<string, any> | false);
     /**
@@ -45,7 +45,7 @@ export default class Node extends Base {
      * @name clean
      * @access public
      * @param value The value to clean
-     * @returns the cleaned value
+     * @return the cleaned value
      */
     clean(value?: any, level?: string[]): any;
     /**
@@ -90,7 +90,7 @@ export default class Node extends Base {
      * constructing it
      *
      * @name toObject
-     * @returns an object that can be converted to JSON
+     * @return an object that can be converted to JSON
      */
     toObject(): Record<string, any>;
     /**
@@ -111,7 +111,7 @@ export default class Node extends Base {
      * @access public
      * @param value The value to validate
      * @param level Names of parents to this node
-     * @returns if the value is valid or not
+     * @return if the value is valid or not
      */
     valid(value: any | null, level?: string[]): boolean;
 }

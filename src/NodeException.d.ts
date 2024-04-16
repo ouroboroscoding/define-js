@@ -26,7 +26,7 @@ export default class NodeException extends Error {
      * @access public
      * @param errors The list of errors found
      * @param message The error message
-     * @returns NodeException
+     * @return NodeException
      */
     constructor(errors: string[][]);
     /**
@@ -36,7 +36,7 @@ export default class NodeException extends Error {
      *
      * @name toString
      * @access public
-     * @returns string
+     * @return string
      */
     toString(): string;
 }

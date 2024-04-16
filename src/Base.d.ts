@@ -30,7 +30,7 @@ export default class Base {
      * @access public
      * @static
      * @param details An object describing a data point
-     * @returns any
+     * @return any
      */
     static create(details: Record<string, any>): any;
     /**
@@ -57,7 +57,7 @@ export default class Base {
      * @access public
      * @param details Node structure
      * @param className The type of Node
-     * @returns Base
+     * @return Base
      */
     constructor(details: Record<string, any>, className: string);
     /**
@@ -67,7 +67,7 @@ export default class Base {
      *
      * @name class
      * @access public
-     * @returnsstring
+     * @returnstring
      */
     class(): string;
     /**
@@ -78,7 +78,7 @@ export default class Base {
      * @name clean
      * @access public
      * @param value The value to clean
-     * @returns the cleaned value
+     * @return the cleaned value
      */
     clean(value?: any, level?: string[]): any;
     /**
@@ -88,7 +88,7 @@ export default class Base {
      *
      * @name optional
      * @param value The value to set
-     * @returnsbool | void
+     * @returnbool | void
      */
     optional(value?: boolean): boolean | void;
     /**
@@ -103,7 +103,7 @@ export default class Base {
      * @param name The name of the value to either set or get
      * @param value The value to set, must be something that can be
      * 				converted directly to JSON
-     * @returnsmixed|void
+     * @returnmixed|void
      */
     special(name: string, value?: any): any;
     /**
@@ -113,7 +113,7 @@ export default class Base {
      *
      * @name toJSON
      * @access public
-     * @returns json reprentation of the node
+     * @return json reprentation of the node
      */
     toJSON(): string;
     /**
@@ -124,7 +124,7 @@ export default class Base {
      *
      * @name toObject
      * @access public
-     * @returns the node as an object that can be represented by json
+     * @return the node as an object that can be represented by json
      */
     toObject(): Record<string, any>;
     /**
@@ -135,7 +135,7 @@ export default class Base {
      * @name valid
      * @access public
      * @param value The value to validate
-     * @returns if the value is valid or not
+     * @return if the value is valid or not
      */
     valid(value?: any, level?: string[]): any;
 }

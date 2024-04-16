@@ -30,7 +30,7 @@ export default class Tree extends Parent {
      * @param details Node structure
      * @param extend Extend the base node structure, if false, don't copy the
      * 					base node structure details
-     * @returns a new instance
+     * @return a new instance
      */
     constructor(details: Record<string, any>, extend?: Record<string, any> | false);
     /**
@@ -41,7 +41,7 @@ export default class Tree extends Parent {
      *
      * @name toObject
      * @access public
-     * @returns an object that can be converted to JSON
+     * @return an object that can be converted to JSON
      */
     toObject(): Record<string, any>;
     /**
@@ -52,7 +52,7 @@ export default class Tree extends Parent {
      * @name valid
      * @param value The value to validate
      * @param level Names of parents to this node
-     * @returns if the value is valid or not
+     * @return if the value is valid or not
      */
     valid(value: Record<string, any>, level?: string[]): boolean;
 }

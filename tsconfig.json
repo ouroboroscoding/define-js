@@ -15,7 +15,13 @@
 	"include": ["./"],
 	"exclude": [
 		"babel.config.cjs",
+		"documentation/*",
 		"jest.config.ts",
 		"tests/*"
-	]
+	],
+
+	"typedocOptions": {
+		"entryPoints": [ "src/index.ts" ],
+		"out": "documentation/html"
+	}
 }
