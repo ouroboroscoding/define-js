@@ -19,7 +19,7 @@
  * @access public
  * @param first A string representing an IP address
  * @param second A string representing an IP address
- * @returns -1 | 0 | 1
+ * @return -1 | 0 | 1
  */
 export declare function compareIPs(first: string, second: string): number;
 /**
@@ -30,7 +30,7 @@ export declare function compareIPs(first: string, second: string): number;
  * @name dateToStr
  * @access public
  * @param date The value to turn into a string
- * @returns the date as a string
+ * @return the date as a string
  */
 export declare function dateToStr(date: Date): string;
 /**
@@ -41,7 +41,7 @@ export declare function dateToStr(date: Date): string;
  * @name dateTimeToStr
  * @access public
  * @param datetime The value to turn into a string
- * @returns the date/time as a string
+ * @return the date/time as a string
  */
 export declare function dateTimeToStr(datetime: Date): string;
 /**
@@ -52,7 +52,7 @@ export declare function dateTimeToStr(datetime: Date): string;
  * @name strToInt
  * @access public
  * @param s The value to parse to an int
- * @returns the numerical representation of the string
+ * @return the numerical representation of the string
  */
 export declare function strToInt(s: string): number;
 declare const helpers: {

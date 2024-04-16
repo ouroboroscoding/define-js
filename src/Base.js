@@ -41,7 +41,7 @@ export default class Base {
      * @access public
      * @static
      * @param details An object describing a data point
-     * @returns any
+     * @return any
      */
     static create(details) {
         // If it's an array, create a list of options
@@ -114,7 +114,7 @@ export default class Base {
      * @access public
      * @param details Node structure
      * @param className The type of Node
-     * @returns Base
+     * @return Base
      */
     constructor(details, className) {
         // If the details are not an Object
@@ -164,7 +164,7 @@ export default class Base {
      *
      * @name class
      * @access public
-     * @returnsstring
+     * @return string
      */
     class() {
         return this._class;
@@ -177,7 +177,7 @@ export default class Base {
      * @name clean
      * @access public
      * @param value The value to clean
-     * @returns the cleaned value
+     * @return the cleaned value
      */
     clean(value, level) {
         throw new Error('Must extend "clean" to extend "Base"');
@@ -189,7 +189,7 @@ export default class Base {
      *
      * @name optional
      * @param value The value to set
-     * @returnsbool | void
+     * @return bool | void
      */
     optional(value) {
         // If the value is not set, this is a getter
@@ -213,7 +213,7 @@ export default class Base {
      * @param name The name of the value to either set or get
      * @param value The value to set, must be something that can be
      * 				converted directly to JSON
-     * @returnsmixed|void
+     * @return mixed | void
      */
     special(name, value) {
         // Check the name is a string
@@ -248,7 +248,7 @@ export default class Base {
      *
      * @name toJSON
      * @access public
-     * @returns json reprentation of the node
+     * @return json reprentation of the node
      */
     toJSON() {
         return JSON.stringify(this.toObject());
@@ -261,7 +261,7 @@ export default class Base {
      *
      * @name toObject
      * @access public
-     * @returns the node as an object that can be represented by json
+     * @return the node as an object that can be represented by json
      */
     toObject() {
         // Init the object we will return
@@ -285,7 +285,7 @@ export default class Base {
      * @name valid
      * @access public
      * @param value The value to validate
-     * @returns if the value is valid or not
+     * @return if the value is valid or not
      */
     valid(value, level) {
         throw new Error('Must extend "valid" to extend "Base"');

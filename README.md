@@ -172,3 +172,5 @@ const nameFirstTitle = parent.get('name').get('first').special('title');
 
 ## Documentation
 Full documentation, including information on using Arrays and dynamic Objects, as well as how to handle errors, can be found on [ouroboroscoding.com/define](https://ouroboroscoding.com/define)
+
+Code documentation can be found at [ouroboroscoding.com/define/javascript](https://ouroboroscoding.com/define/javascript)

@@ -58,7 +58,7 @@ export default class ArrayNode extends Base {
 	 * @param details Node structure
 	 * @param extend Extend the base node structure, if false, don't copy the
 	 * 					base node structure details
-	 * @returns a new instance
+	 * @return a new instance
 	 */
 	constructor(details: Record<string, any>, extend?: Record<string, any> | false) {
 
@@ -151,7 +151,7 @@ export default class ArrayNode extends Base {
 	 *
 	 * @name child
 	 * @access public
-	 * @returns the instance of the elements node
+	 * @return the instance of the elements node
 	 */
 	child(): Base {
 		return this._node;
@@ -166,7 +166,7 @@ export default class ArrayNode extends Base {
 	 * @name clean
 	 * @access public
 	 * @param value The value to clean
-	 * @returns the cleaned array values
+	 * @return the cleaned array values
 	 */
 	clean(value?: any[] | null, level?: string[]): any[] | null {
 
@@ -231,7 +231,7 @@ export default class ArrayNode extends Base {
 	 * @access public
 	 * @param minimum The minimum value
 	 * @param maximum The maximum value
-	 * @returns The currently set min / max on get, or void for set
+	 * @return The currently set min / max on get, or void for set
 	 */
 	minmax(minimum?: number | string | null, maximum?: number | string | null): MinMax | void {
 
@@ -325,7 +325,7 @@ export default class ArrayNode extends Base {
 	 *
 	 * @name toObject
 	 * @access public
-	 * @returns an object that can be converted to JSON
+	 * @return an object that can be converted to JSON
 	 */
 	toObject(): Record<string, any> {
 
@@ -379,7 +379,7 @@ export default class ArrayNode extends Base {
 	 *
 	 * @name type
 	 * @access public
-	 * @returns string
+	 * @return string
 	 */
 	type(): string {
 		return this._type;
@@ -394,7 +394,7 @@ export default class ArrayNode extends Base {
 	 * @access public
 	 * @param value The value to validate
 	 * @param level Names of parents to this node
-	 * @returns if the value is valid or not
+	 * @return if the value is valid or not
 	 */
 	valid(value: any[] | null, level?: string[]): boolean {
 
