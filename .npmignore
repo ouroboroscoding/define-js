@@ -1,7 +1,8 @@
-/.gitignore
-/babel.config.cjs
+.gitignore
+.gitmodules
+babel.config.cjs
 /documentation/*
-/jest.config.js
-/tsconfig.json
-/tslint.json
+jest.config.js
+tsconfig.json
+tslint.json
 /tests/*
