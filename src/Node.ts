@@ -208,7 +208,8 @@ export default class Node extends Base {
 		}
 
 		// Else if it's a basic string type
-		else if(['base64', 'ip', 'string', 'uuid', 'uuid4'].indexOf(this._type) !== -1) {
+		else if(['base64', 'ip', 'string', 'uuid',
+				'uuid4'].indexOf(this._type) !== -1) {
 
 			// And not already a string
 			if(typeof value !== 'string') {
@@ -222,7 +223,11 @@ export default class Node extends Base {
 			// If it's specifically a string, it needs to match a specific
 			//	pattern to be true
 			if(typeof value === 'string') {
-				value = (['true', 'True', 'TRUE', 't', 'T', 'yes', 'Yes', 'YES', 'y', 'Y', 'x', '1'].indexOf(value) === -1) ? false : true;
+				value = (
+					['true', 'True', 'TRUE', 't', 'T', 'yes',
+						'Yes', 'YES', 'y', 'Y', 'x', '1'
+						].indexOf(value) === -1
+				) ? false : true;
 			}
 			else {
 				value = value ? true : false;
@@ -359,7 +364,9 @@ export default class Node extends Base {
 
 		// Else we probably forgot to add a new type
 		else {
-			throw new Error('"' + this._type + '" has not been added to .clean()');
+			throw new Error(
+				`"${this._type}" has not been added to .clean()`
+			);
 		}
 
 		// Return the cleaned value
@@ -393,27 +400,34 @@ export default class Node extends Base {
 
 			// If it's undefined
 			if(minimum === undefined) {
-				throw new Error('"minimum" can only be undefined if "maximum" is also undefined');
+				throw new Error(
+					'"minimum" can only be undefined if "maximum" is also undefined'
+				);
 			}
 
 			// If the current type is a date, datetime, ip, or time
 			if(['date', 'datetime', 'ip', 'time'].indexOf(this._type) !== -1) {
 
 				// Make sure the value is valid for the type
-				if(typeof minimum !== 'string' || !constants.regex[this._type as keyof typeof constants.regex].test(minimum)) {
-					throw new Error('"__minimum__" is not valid for the current type: "' + this._type + '"');
+				if(typeof minimum !== 'string' ||
+					!constants.regex[this._type as keyof typeof constants.regex].test(minimum)) {
+					throw new Error(
+						`"__minimum__" is not valid for the current type: "${this._type}"`
+					);
 				}
 			}
 
 			// Else if the type is an int (unsigned, timestamp), or a string
 			//	in which the minimum/maximum are lengths
-			else if(['base64', 'int', 'string', 'timestamp', 'uint'].indexOf(this._type) !== -1) {
+			else if(['base64', 'int', 'string', 'timestamp',
+					'uint'].indexOf(this._type) !== -1) {
 
 				// If the value is not a valid int or long
 				if(!isInteger(minimum)) {
 
 					// If it's a valid representation of an integer
-					if(typeof minimum === 'string' && constants.regex.int.test(minimum)) {
+					if(typeof minimum === 'string' &&
+						constants.regex.int.test(minimum)) {
 						minimum = strToInt(minimum);
 					}
 
@@ -423,11 +437,14 @@ export default class Node extends Base {
 					}
 
 					// If the type is meant to be unsigned
-					if(['base64', 'string', 'timestamp', 'uint'].indexOf(this._type) !== -1) {
+					if(['base64', 'string', 'timestamp',
+						'uint'].indexOf(this._type) !== -1) {
 
 						// And it's below zero
 						if(minimum < 0) {
-							throw new Error('"__minimum__" must be an unsigned integer');
+							throw new Error(
+								'"__minimum__" must be an unsigned integer'
+							);
 						}
 					}
 				}
@@ -442,7 +459,8 @@ export default class Node extends Base {
 				}
 
 				// If it's a valid representation of a decimal
-				else if(typeof minimum === 'string' && constants.regex.decimal.test(minimum)) {
+				else if(typeof minimum === 'string' &&
+						constants.regex.decimal.test(minimum)) {
 					minimum = new Decimal(minimum);
 				}
 
@@ -461,7 +479,8 @@ export default class Node extends Base {
 				}
 
 				// If it's a valid representation of a float
-				else if(typeof minimum === 'string' && constants.regex.decimal.test(minimum)) {
+				else if(typeof minimum === 'string' &&
+						constants.regex.decimal.test(minimum)) {
 					minimum = parseFloat(minimum);
 				}
 
@@ -480,7 +499,8 @@ export default class Node extends Base {
 				}
 
 				// If it's a valid representation of a decimal
-				else if(typeof minimum === 'string' && constants.regex.price.test(minimum)) {
+				else if(typeof minimum === 'string' &&
+						constants.regex.price.test(minimum)) {
 					minimum = new Decimal(minimum);
 				}
 
@@ -492,7 +512,9 @@ export default class Node extends Base {
 
 			// Else we can't have a minimum
 			else {
-				throw new Error('can not set __minimum__ for "' + this._type + '"');
+				throw new Error(
+					`can not set __minimum__ for "${this._type}"`
+				);
 			}
 
 			// Store the minimum
@@ -504,27 +526,34 @@ export default class Node extends Base {
 
 			// If it's undefined
 			if(maximum === undefined) {
-				throw new Error('"maximum" can only be undefined if "minimum" is also undefined');
+				throw new Error(
+					'"maximum" can only be undefined if "minimum" is also undefined'
+				);
 			}
 
 			// If the current type is a date, datetime, ip, or time
 			if(['date', 'datetime', 'ip', 'time'].indexOf(this._type) !== -1) {
 
 				// Make sure the value is valid for the type
-				if(typeof maximum !== 'string' || !constants.regex[this._type as keyof typeof constants.regex].test(maximum)) {
-					throw new Error('"__maximum__" is not valid for the current type: "' + this._type + '"');
+				if(typeof maximum !== 'string' ||
+					!constants.regex[this._type as keyof typeof constants.regex].test(maximum)) {
+					throw new Error(
+						`"__maximum__" is not valid for the current type: "${this._type}"`
+					);
 				}
 			}
 
 			// Else if the type is an int (unsigned, timestamp), or a string
 			//	in which the minimum/maximum are lengths
-			else if(['base64', 'int', 'string', 'timestamp', 'uint'].indexOf(this._type) !== -1) {
+			else if(['base64', 'int', 'string', 'timestamp',
+					'uint'].indexOf(this._type) !== -1) {
 
 				// If the value is not a valid int or long
 				if(!isInteger(maximum)) {
 
 					// If it's a valid representation of an integer
-					if(typeof maximum === 'string' && constants.regex.int.test(maximum)) {
+					if(typeof maximum === 'string' &&
+						constants.regex.int.test(maximum)) {
 						maximum	= strToInt(maximum);
 					}
 
@@ -534,11 +563,14 @@ export default class Node extends Base {
 					}
 
 					// If the type is meant to be unsigned
-					if(['base64', 'string', 'timestamp', 'uint'].indexOf(this._type) !== -1) {
+					if(['base64', 'string', 'timestamp',
+						'uint'].indexOf(this._type) !== -1) {
 
 						// And it's below zero
 						if(maximum < 0) {
-							throw new Error('"__maximum__" must be an unsigned integer');
+							throw new Error(
+								'"__maximum__" must be an unsigned integer'
+							);
 						}
 					}
 				}
@@ -553,7 +585,8 @@ export default class Node extends Base {
 				}
 
 				// If it's a valid representation of a decimal
-				else if(typeof maximum === 'string' && constants.regex.decimal.test(maximum)) {
+				else if(typeof maximum === 'string' &&
+						constants.regex.decimal.test(maximum)) {
 					maximum = new Decimal(maximum);
 				}
 
@@ -572,7 +605,8 @@ export default class Node extends Base {
 				}
 
 				// If it's a valid representation of a float
-				else if(typeof maximum === 'string' && constants.regex.decimal.test(maximum)) {
+				else if(typeof maximum === 'string' &&
+						constants.regex.decimal.test(maximum)) {
 					maximum = parseFloat(maximum);
 				}
 
@@ -591,7 +625,8 @@ export default class Node extends Base {
 				}
 
 				// If it's a valid representation of a decimal
-				else if(typeof maximum === 'string' && constants.regex.price.test(maximum)) {
+				else if(typeof maximum === 'string' &&
+						constants.regex.price.test(maximum)) {
 					maximum = new Decimal(maximum);
 				}
 
@@ -603,7 +638,8 @@ export default class Node extends Base {
 
 			// Else we can't have a minimum
 			else {
-				throw new Error('can not set __maximum__ for "' + this._type + '"');
+				throw new Error(
+					`can not set __maximum__ for "${this._type}"`);
 			}
 
 			// If we also have a minimum
@@ -614,7 +650,9 @@ export default class Node extends Base {
 
 					// If the min is above the maximum, we have a problem
 					if(compareIPs(this._minimum, maximum) === 1) {
-						throw new Error('"__maximum__" can not be below "__minimum__"');
+						throw new Error(
+							'"__maximum__" can not be below "__minimum__"'
+						);
 					}
 				}
 
@@ -623,7 +661,9 @@ export default class Node extends Base {
 
 					// If the min is above the maximum, we have a problem
 					if(this._minimum > maximum) {
-						throw new Error('"__maximum__" can not be below "__minimum__"');
+						throw new Error(
+							'"__maximum__" can not be below "__minimum__"'
+						);
 					}
 				}
 			}
@@ -661,8 +701,10 @@ export default class Node extends Base {
 			// If the type is not one that can have options
 			if(['base64', 'date', 'datetime', 'decimal',
 					'float', 'int', 'ip', 'md5', 'price', 'string',
-					'time', 'timestamp', 'uint', 'uuid', 'uuid4'].indexOf(this._type) === -1) {
-				throw new Error('can not set __options__ for "' + this._type + '"');
+					'time', 'timestamp', 'uint', 'uuid', 'uuid4'
+				].indexOf(this._type) === -1) {
+				throw new Error(
+					`can not set __options__ for "${this._type}"`);
 			}
 
 			// Init the array of options to be saved
@@ -677,8 +719,11 @@ export default class Node extends Base {
 
 					// If the value is not a string or doesn't match its regex,
 					//	throw an error
-					if(typeof opts[i] !== 'string' || !constants.regex[this._type as keyof typeof constants.regex].test(opts[i])) {
-						throw new Error('"__options__[' + i + ']" is not valid for "' + this._type + '"');
+					if(typeof opts[i] !== 'string' ||
+							!constants.regex[this._type as keyof typeof constants.regex].test(opts[i])) {
+						throw new Error(
+							`"__options__[${i}]" is not valid for "${this._type}"`
+						);
 					}
 				}
 
@@ -695,7 +740,9 @@ export default class Node extends Base {
 						try {
 							opts[i] = new Decimal(opts[i]);
 						} catch(err) {
-							throw new Error('"__options__[' + i + ']" not a valid decimal');
+							throw new Error(
+								`"__options__[${i}]" not a valid decimal`
+							);
 						}
 					}
 				}
@@ -709,7 +756,9 @@ export default class Node extends Base {
 						// If we can't convert it to a float
 						opts[i] = parseFloat(opts[i]);
 						if(isNaN(opts[i])) {
-							throw new Error('"__options__[' + i + ']" not a valid float');
+							throw new Error(
+								`"__options__[${i}]" not a valid float`
+							);
 						}
 					}
 				}
@@ -721,19 +770,25 @@ export default class Node extends Base {
 					if(!isInteger(opts[i])) {
 
 						// If it's a valid representation of an integer
-						if(typeof opts[i] === 'string' && constants.regex.int.test(opts[i])) {
+						if(typeof opts[i] === 'string' &&
+								constants.regex.int.test(opts[i])) {
 							opts[i]	= strToInt(opts[i]);
 						}
 
 						// Else, raise an error
 						else {
-							throw new Error('"__options__[' + i + ']" must be an integer');
+							throw new Error(
+								`"__options__[${i}]" must be an integer`
+							);
 						}
 					}
 
 					// If the type is unsigned and negative, raise an error
-					if(['timestamp', 'uint'].indexOf(this._type) !== -1 && opts[i] < 0) {
-						throw new Error('"__options__[' + i + ']" must be an unsigned integer');
+					if(['timestamp', 'uint'].indexOf(this._type) !== -1 &&
+							opts[i] < 0) {
+						throw new Error(
+							`"__options__[${i}]" must be an unsigned integer`
+						);
 					}
 				}
 
@@ -746,8 +801,11 @@ export default class Node extends Base {
 					}
 
 					// Else if it's not a valid price representation
-					else if(typeof opts[i] !== 'string' || !constants.regex.price.test(opts[i])) {
-						throw new Error('"__options__[' + i + ']" not a valid price');
+					else if(typeof opts[i] !== 'string' ||
+							!constants.regex.price.test(opts[i])) {
+						throw new Error(
+							`"__options__[${i}]" not a valid price`
+						);
 					}
 
 					// Store it as a Decimal
@@ -765,7 +823,9 @@ export default class Node extends Base {
 
 				// Else, we have no validation for the type
 				else {
-					throw new Error(`can not set __options__ for "${this._type}"`)
+					throw new Error(
+						`can not set __options__ for "${this._type}"`
+					);
 				}
 
 				// If it's already in the list, raise an error
@@ -805,8 +865,11 @@ export default class Node extends Base {
 		else {
 
 			// If the type is not a string
-			if(['decimal', 'int', 'price', 'string', 'timestamp', 'uint'].indexOf(this._type) === -1) {
-				throw new Error('can not set __regex__ for "' + this._type + '"');
+			if(['decimal', 'int', 'price', 'string', 'timestamp',
+				'uint'].indexOf(this._type) === -1) {
+				throw new Error(
+					'can not set __regex__ for "' + this._type + '"'
+				);
 			}
 
 			// If it's not a valid regex
@@ -814,7 +877,9 @@ export default class Node extends Base {
 
 				// And it's not a string
 				if(typeof regex !== 'string') {
-					throw new Error('"__regex__" must be a valid string or RegExp');
+					throw new Error(
+						'"__regex__" must be a valid string or RegExp'
+					);
 				}
 
 				// Turn the string into a RegExp
@@ -927,7 +992,8 @@ export default class Node extends Base {
 		}
 
 		// If we are validating a DATE, DATETIME, IP or TIME data point
-		else if(['base64', 'date', 'datetime', 'ip', 'md5', 'time', 'uuid', 'uuid4'].indexOf(this._type) !== -1) {
+		else if(['base64', 'date', 'datetime', 'ip', 'md5', 'time', 'uuid',
+				'uuid4'].indexOf(this._type) !== -1) {
 
 			// If it's a date and the value is a JavaScript Date
 			if(this._type === 'date' && value instanceof Date) {
@@ -964,13 +1030,17 @@ export default class Node extends Base {
 
 					// If the IP is greater than the maximum
 					if(this._maximum !== null && compareIPs(value, this._maximum) === 1) {
-						this.validationFailures.push([level.join('.'), 'exceeds maximum']);
+						this.validationFailures.push(
+							[level.join('.'), 'exceeds maximum']
+						);
 						return false;
 					}
 
 					// If the IP is less than the minimum
 					if(this._minimum !== null && compareIPs(value, this._minimum) === -1) {
-						this.validationFailures.push([level.join('.'), 'did not meet minimum']);
+						this.validationFailures.push(
+							[level.join('.'), 'did not meet minimum']
+						);
 						return false;
 					}
 
@@ -993,13 +1063,16 @@ export default class Node extends Base {
 			if(!isInteger(value)) {
 
 				// And it's a valid representation of an int
-				if(typeof value === 'string' && constants.regex.int.test(value)) {
+				if(typeof value === 'string' &&
+					constants.regex.int.test(value)) {
 					value = strToInt(value);
 				}
 
 				// Else, return false
 				else {
-					this.validationFailures.push([level.join('.'), 'not an integer']);
+					this.validationFailures.push(
+						[level.join('.'), 'not an integer']
+					);
 					return false;
 				}
 			}
@@ -1032,17 +1105,23 @@ export default class Node extends Base {
 			else if(typeof value === 'string') {
 
 				// If it's t, T, 1, f, F, or 0
-				if(['true', 'true', 'TRUE', 't', 'T', '1', 'false', 'false', 'FALSE', 'f', 'F', '0'].indexOf(value) !== -1) {
+				if(['true', 'true', 'TRUE', 't', 'T', '1', 'false', 'false',
+					'FALSE', 'f', 'F', '0'].indexOf(value) !== -1) {
 					return true;
 				} else {
-					this.validationFailures.push([level.join('.'), 'not a valid string representation of a bool']);
+					this.validationFailures.push(
+						[level.join('.'),
+							'not a valid string representation of a bool']
+					);
 					return false;
 				}
 			}
 
 			// Else it's no valid type
 			else {
-				this.validationFailures.push([level.join('.'), 'not valid bool replacement']);
+				this.validationFailures.push(
+					[level.join('.'), 'not valid bool replacement']
+				);
 				return false;
 			}
 		}
@@ -1066,7 +1145,9 @@ export default class Node extends Base {
 				try {
 					value = new Decimal(value);
 				} catch(err) {
-					this.validationFailures.push([level.join('.'), 'can not be converted to decimal']);
+					this.validationFailures.push(
+						[level.join('.'), 'can not be converted to decimal']
+					);
 					return false;
 				}
 			}
@@ -1089,7 +1170,9 @@ export default class Node extends Base {
 
 				// If there's a minimum and we don't reach it
 				if(this._minimum !== null && value.lessThan(this._minimum)) {
-					this.validationFailures.push([level.join('.'), 'not long enough']);
+					this.validationFailures.push(
+						[level.join('.'), 'not long enough']
+					);
 					return false;
 				}
 
@@ -1123,7 +1206,9 @@ export default class Node extends Base {
 
 				// If it's an invalid representation
 				if(!constants.regex.decimal.test(value)) {
-					this.validationFailures.push([level.join('.'), 'failed regex (internal)']);
+					this.validationFailures.push(
+						[level.join('.'), 'failed regex (internal)']
+					);
 					return false;
 				}
 
@@ -1135,7 +1220,9 @@ export default class Node extends Base {
 			else {
 				value = parseFloat(value);
 				if(isNaN(value)) {
-					this.validationFailures.push([level.join('.'), 'can not be converted to float']);
+					this.validationFailures.push(
+						[level.join('.'), 'can not be converted to float']
+					);
 					return false;
 				}
 			}
@@ -1153,7 +1240,9 @@ export default class Node extends Base {
 					return true;
 				}
 				catch(err) {
-					this.validationFailures.push([level.join('.'), 'Can not be decoded from JSON']);
+					this.validationFailures.push(
+						[level.join('.'), 'Can not be decoded from JSON']
+					);
 					return false;
 				}
 			}
@@ -1167,7 +1256,9 @@ export default class Node extends Base {
 					return true;
 				}
 				catch(err) {
-					this.validationFailures.push([level.join('.'), 'Can not be encoded to JSON']);
+					this.validationFailures.push(
+						[level.join('.'), 'Can not be encoded to JSON']
+					);
 					return false;
 				}
 			}
@@ -1190,7 +1281,9 @@ export default class Node extends Base {
 
 					// If it doesn't match the regex
 					if(!constants.regex.price.test(value)) {
-						this.validationFailures.push([level.join('.'), 'invalid']);
+						this.validationFailures.push(
+							[level.join('.'), 'invalid']
+						);
 						return false;
 					}
 
@@ -1205,14 +1298,18 @@ export default class Node extends Base {
 
 				// Else it can't be converted
 				else {
-					this.validationFailures.push([level.join('.'), 'can not be converted to price']);
+					this.validationFailures.push(
+						[level.join('.'), 'can not be converted to price']
+					);
 					return false;
 				}
 			}
 
 			// If there's too many decimal points
 			if(value.decimalPlaces() > 2) {
-				this.validationFailures.push([level.join('.'), 'too many decimal points']);
+				this.validationFailures.push(
+					[level.join('.'), 'too many decimal points']
+				);
 				return false;
 			}
 
@@ -1234,7 +1331,9 @@ export default class Node extends Base {
 
 				// If there's a minimum and we don't reach it
 				if(this._minimum !== null && value.lessThan(this._minimum)) {
-					this.validationFailures.push([level.join('.'), 'not long enough']);
+					this.validationFailures.push(
+						[level.join('.'), 'not long enough']
+					);
 					return false;
 				}
 
@@ -1254,7 +1353,9 @@ export default class Node extends Base {
 
 			// If the value is not some form of string
 			if(typeof value !== 'string') {
-				this.validationFailures.push([level.join('.'), 'is not a string']);
+				this.validationFailures.push(
+					[level.join('.'), 'is not a string']
+				);
 				return false;
 			}
 
@@ -1268,12 +1369,14 @@ export default class Node extends Base {
 				}
 			}
 
-			// Else
-			else if(this._minimum || this._maximum) {
+			// If we have a min or max
+			if(this._minimum || this._maximum) {
 
 				// If there's a minimum length and we don't reach it
 				if(this._minimum && value.length < this._minimum) {
-					this.validationFailures.push([level.join('.'), 'not long enough']);
+					this.validationFailures.push(
+						[level.join('.'), 'not long enough']
+					);
 					return false;
 				}
 
@@ -1293,7 +1396,9 @@ export default class Node extends Base {
 
 			// Returns based on the option's existance
 			if(this._options.indexOf(value) === -1) {
-				this.validationFailures.push([level.join('.'), 'not in options']);
+				this.validationFailures.push(
+					[level.join('.'), 'not in options']
+				);
 				return false;
 			} else {
 				return true;
@@ -1305,13 +1410,17 @@ export default class Node extends Base {
 
 			// If the value is less than the minimum
 			if(this._minimum && value < this._minimum) {
-				this.validationFailures.push([level.join('.'), 'did not meet minimum']);
+				this.validationFailures.push(
+					[level.join('.'), 'did not meet minimum']
+				);
 				return false;
 			}
 
 			// If the value is greater than the maximum
 			if(this._maximum && value > this._maximum) {
-				this.validationFailures.push([level.join('.'), 'exceeds maximum']);
+				this.validationFailures.push(
+					[level.join('.'), 'exceeds maximum']
+				);
 				return false;
 			}
 		}
