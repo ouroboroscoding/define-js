@@ -9,17 +9,17 @@
 		"lib": ["es2017"],
 		"moduleResolution": "node",
 		"noEmit": false,
+		"outDir": "build",
 		"strict": true,
 		"target": "esnext"
 	},
-	"include": ["./"],
+	"include": ["./src"],
 	"exclude": [
 		"babel.config.cjs",
 		"documentation/*",
 		"jest.config.ts",
 		"tests/*"
 	],
-
 	"typedocOptions": {
 		"entryPoints": [ "src/index.ts" ],
 		"out": "documentation/html"
