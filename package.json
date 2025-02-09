@@ -1,11 +1,11 @@
 {
   "name": "@ouroboros/define",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A system for defining and validating data regardless of data store",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "tslint -p tsconfig.json && tsc && typedoc",
+    "build": "tslint -p tsconfig.json && tsc",
     "clean": "rm build/*",
     "docs": "typedoc",
     "test": "jest"
