@@ -15,7 +15,7 @@ import Base from './Base';
 // Import exceptions
 import NodeException from './NodeException';
 // Import helpers
-import constants from './constants.js';
+import constants from './constants';
 import { strToInt } from './helpers';
 /**
  * Array Node

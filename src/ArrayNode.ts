@@ -10,7 +10,7 @@
 
 // Ouroboros modules
 import clone from '@ouroboros/clone';
-import { combine, isInteger, isObject, min } from '@ouroboros/tools';
+import { combine, isInteger, isObject } from '@ouroboros/tools';
 
 // Import node modules
 import Base from './Base';
@@ -19,7 +19,7 @@ import Base from './Base';
 import NodeException from './NodeException';
 
 // Import helpers
-import constants from './constants.js';
+import constants from './constants';
 import { strToInt } from './helpers';
 
 // Types

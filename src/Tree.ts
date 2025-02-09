@@ -88,12 +88,12 @@ export default class Tree extends Parent {
 		}
 
 		// If the name is not set
-		if(!('__name__' in details)) {
+		if(!('__name__' in oDetails)) {
 			throw new Error('"__name__" not found in details');
 		}
 
 		// If the name is not valid
-		if(!constants.standard.test(details.__name__)) {
+		if(!constants.standard.test(oDetails.__name__)) {
 			throw new Error('"__name__" not a valid value for Tree');
 		}
 
