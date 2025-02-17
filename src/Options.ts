@@ -94,10 +94,13 @@ export default class Options extends Base {
 		}
 
 		// Call the parent constructor
-		super({}, 'HashNode');
+		super({}, 'Options');
 
 		// Init the internal list
 		this._nodes = [];
+
+		// Assume optional, we'll change it based on the children
+		this._optional = true;
 
 		// Go through each element in the list
 		for(let i = 0; i < details.length; ++i) {
