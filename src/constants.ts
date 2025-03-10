@@ -16,8 +16,8 @@ const constants = {
 	array: ['unique', 'duplicates'],
 	nodes: [
 		'any', 'base64', 'bool', 'date', 'datetime', 'decimal', 'float', 'int',
-		'ip', 'json', 'md5', 'price', 'string', 'time', 'timestamp', 'uint',
-		'uuid', 'uuid4'
+		'ip', 'json', 'md5', 'price', 'string', 'time', 'timestamp', 'tuuid',
+		'tuuid4', 'uint', 'uuid', 'uuid4'
 	],
 	special: {
 		syntax: specialSyntax,
@@ -39,6 +39,8 @@ const constants = {
 		md5:		/^[a-fA-F0-9]{32}$/,
 		price:		/^-?(?:[1-9]\d+|\d)(?:\.\d{1,2})?$/,
 		time:		/^(?:[01]\d|2[0-3])(?::[0-5]\d){2}$/,
+		tuuid:		/^[a-f0-9]{8}[a-f0-9]{4}[a-f0-9]{4}[a-f0-9]{4}[a-f0-9]{12}$/,
+		tuuid4:		/^[a-f0-9]{8}[a-f0-9]{4}4[a-f0-9]{3}[89aAbB][a-f0-9]{3}[a-f0-9]{12}$/,
 		uuid:		/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/,
 		uuid4:		/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}$/
 	}

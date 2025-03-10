@@ -942,6 +942,61 @@ describe('timestamp', () => {
 	});
 });
 
+// Test 'tuuid' Nodes
+describe('tuuid', () => {
+
+	// Create a new basic tuuid Node module
+	const oNode = new Node({
+		'__type__': 'tuuid'
+	});
+
+	// Check for true
+	test('"52cd4b20ca32443395160c8684ec57c2" is a valid tuuid', () => {
+		expect(oNode.valid('52cd4b20ca32443395160c8684ec57c2')).toBe(true);
+	});
+	test('"3b44c5ed0fea44789f1b939ae6ec0721" is a valid tuuid', () => {
+		expect(oNode.valid('3b44c5ed0fea44789f1b939ae6ec0721')).toBe(true);
+	});
+	test('"6432b16a7e2747cd836082d82ac70078" is a valid tuuid', () => {
+		expect(oNode.valid('6432b16a7e2747cd836082d82ac70078')).toBe(true);
+	});
+
+	// Check for false
+	test('"Hello" is not a valid tuuid', () => {
+		expect(oNode.valid('Hello')).toBe(false);
+	});
+	test('"Hello" is not a valid tuuid', () => {
+		expect(oNode.valid(true)).toBe(false);
+	});
+	test('0 is not a valid tuuid', () => {
+		expect(oNode.valid(0)).toBe(false);
+	});
+	test('0.1 is not a valid tuuid', () => {
+		expect(oNode.valid(0.1)).toBe(false);
+	});
+	test('"192.168.0.1" is not a valid tuuid', () => {
+		expect(oNode.valid('192.168.0.1')).toBe(false);
+	});
+	test('"2016-03-05" is not a valid tuuid', () => {
+		expect(oNode.valid('2016-03-05')).toBe(false);
+	});
+	test('"13:50:00" is not a valid tuuid', () => {
+		expect(oNode.valid('13:50:00')).toBe(false);
+	});
+	test('"2016-03-05 13:50:00" is not a valid tuuid', () => {
+		expect(oNode.valid('2016-03-05 13:50:00')).toBe(false);
+	});
+	test('"6432b16a-7e27-47cd-8360-82d82ac70078" is not a valid tuuid', () => {
+		expect(oNode.valid('6432b16a-7e27-47cd-8360-82d82ac70078')).toBe(false);
+	});
+	test('[] is not a valid tuuid', () => {
+		expect(oNode.valid([])).toBe(false);
+	});
+	test('{} is not a valid tuuid', () => {
+		expect(oNode.valid({})).toBe(false);
+	});
+});
+
 // Test 'uint' Nodes
 describe('uint', () => {
 
@@ -1010,6 +1065,9 @@ describe('uuid', () => {
 	});
 	test('"2016-03-05 13:50:00" is not a valid uuid', () => {
 		expect(oNode.valid('2016-03-05 13:50:00')).toBe(false);
+	});
+	test('"6432b16a7e2747cd836082d82ac70078" is not a valid uuid', () => {
+		expect(oNode.valid('6432b16a7e2747cd836082d82ac70078')).toBe(false);
 	});
 	test('[] is not a valid uuid', () => {
 		expect(oNode.valid([])).toBe(false);

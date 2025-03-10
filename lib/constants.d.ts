@@ -27,6 +27,8 @@ declare const constants: {
         md5: RegExp;
         price: RegExp;
         time: RegExp;
+        tuuid: RegExp;
+        tuuid4: RegExp;
         uuid: RegExp;
         uuid4: RegExp;
     };
