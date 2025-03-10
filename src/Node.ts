@@ -61,7 +61,10 @@ export default class Node extends Base {
 	 *  base node structure details
 	 * @return a new instance
 	 */
-	constructor(details: Record<string, any> | string, extend?: Record<string, any> | false) {
+	constructor(
+		details: Record<string, any> | string,
+		extend?: Record<string, any> | false
+	) {
 
 		// Init the details
 		let oDetails: Record<string, any>;
@@ -112,8 +115,8 @@ export default class Node extends Base {
 				// If it's an object
 				if(isObject(extend)) {
 
-					// Store the details by making a new object from the details and
-					//	the extend
+					// Store the details by making a new object from the details
+					//	and the extend
 					oDetails = combine(details, extend as Record<string, any>);
 				}
 
@@ -208,7 +211,7 @@ export default class Node extends Base {
 		}
 
 		// Else if it's a basic string type
-		else if(['base64', 'ip', 'string', 'uuid',
+		else if(['base64', 'ip', 'string', 'tuuid', 'tuuid4', 'uuid',
 				'uuid4'].indexOf(this._type) !== -1) {
 
 			// And not already a string
@@ -701,7 +704,8 @@ export default class Node extends Base {
 			// If the type is not one that can have options
 			if(['base64', 'date', 'datetime', 'decimal',
 					'float', 'int', 'ip', 'md5', 'price', 'string',
-					'time', 'timestamp', 'uint', 'uuid', 'uuid4'
+					'time', 'timestamp', 'tuuid', 'tuuid4', 'uint', 'uuid',
+					'uuid4'
 				].indexOf(this._type) === -1) {
 				throw new Error(
 					`can not set __options__ for "${this._type}"`);
@@ -715,7 +719,8 @@ export default class Node extends Base {
 
 				// Convert the value based on the type
 				// If the type is a string one that we can validate
-				if(['base64', 'date', 'datetime', 'ip', 'md5', 'time', 'uuid', 'uuid4'].indexOf(this._type) !== -1) {
+				if(['base64', 'date', 'datetime', 'ip', 'md5', 'time', 'tuuid',
+					'tuuid4', 'uuid', 'uuid4'].indexOf(this._type) !== -1) {
 
 					// If the value is not a string or doesn't match its regex,
 					//	throw an error
@@ -992,8 +997,8 @@ export default class Node extends Base {
 		}
 
 		// If we are validating a DATE, DATETIME, IP or TIME data point
-		else if(['base64', 'date', 'datetime', 'ip', 'md5', 'time', 'uuid',
-				'uuid4'].indexOf(this._type) !== -1) {
+		else if(['base64', 'date', 'datetime', 'ip', 'md5', 'time', 'tuuid',
+				'tuuid4', 'uuid', 'uuid4'].indexOf(this._type) !== -1) {
 
 			// If it's a date and the value is a JavaScript Date
 			if(this._type === 'date' && value instanceof Date) {

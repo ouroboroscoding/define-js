@@ -377,6 +377,25 @@ describe('timestamp', () => {
 	});
 });
 
+// Test 'tuuid' Nodes
+describe('tuuid', () => {
+
+	// Create a basic tuuid Node
+	const oNode = new Node({
+		__type__: 'tuuid'
+	});
+
+	test('"52cd4b20ca32443395160c8684ec57c2" equals "52cd4b20ca32443395160c8684ec57c2"', () => {
+		expect(oNode.clean('52cd4b20ca32443395160c8684ec57c2')).toBe('52cd4b20ca32443395160c8684ec57c2');
+	});
+	test('"3b44c5ed0fea44789f1b939ae6ec0721" equals "3b44c5ed0fea44789f1b939ae6ec0721"', () => {
+		expect(oNode.clean('3b44c5ed0fea44789f1b939ae6ec0721')).toBe('3b44c5ed0fea44789f1b939ae6ec0721');
+	});
+	test('"6432b16a7e2747cd836082d82ac70078" equals "6432b16a7e2747cd836082d82ac70078"', () => {
+		expect(oNode.clean('6432b16a7e2747cd836082d82ac70078')).toBe('6432b16a7e2747cd836082d82ac70078');
+	});
+});
+
 // Test 'uint' Nodes
 describe('uint', () => {
 
