@@ -4,6 +4,9 @@
 
 Define uses JSON as a language independant way to describe data types that can then be validated, and in the case of all strings form data, cleaned up and turned into the appropriate variable type.
 
+See [Releases](https://github.com/ouroboroscoding/define-js/blob/main/releases.md)
+for changes from release to release.
+
 ## Install
 ```bash
 npm install @ouroboros/define
@@ -113,9 +116,14 @@ data = tree.clean(data);
 ```
 
 ## Extending
-Any fields marked by two leading and trailing underscores is considered a special value and can be accessed using the `special` method. This can be used to add details only relevent to a specific system, either directly, or through the use of classes that inherit the Define classes.
+Any fields marked by two leading and trailing underscores is considered a
+special value and can be accessed using the `special` method. This can be used
+to add details only relevent to a specific system, either directly, or through
+the use of classes that inherit the Define classes.
 
-For example, a class that handles creating forms (check out [@ouroboros/define-mui](https://www.npmjs.com/package/@ouroboros/define-mui)) to enter the data might need a title to display the form field.
+For example, a class that handles creating forms (check out
+[@ouroboros/define-mui](https://www.npmjs.com/package/@ouroboros/define-mui))
+to enter the data might need a title to display the form field.
 
 user.json
 ```json
@@ -143,7 +151,8 @@ user.json
 }
 ```
 
-Or, if we don't want this data in the shared file, we can add it at runtime and let the class merge the two.
+Or, if we don't want this data in the shared file, we can add it at runtime and
+let the class merge the two.
 
 user.js
 ```javascript
@@ -171,6 +180,9 @@ const nameFirstTitle = parent.get('name').get('first').special('title');
 ```
 
 ## Documentation
-Full documentation, including information on using Arrays and dynamic Objects, as well as how to handle errors, can be found on [ouroboroscoding.com/define](https://ouroboroscoding.com/define)
+Full documentation, including information on using Arrays and dynamic Objects,
+as well as how to handle errors, can be found on
+[ouroboroscoding.com/define](https://ouroboroscoding.com/define).
 
-Code documentation can be found at [ouroboroscoding.com/define/javascript](https://ouroboroscoding.com/define/javascript)
+Code documentation can be found at
+[ouroboroscoding.com/define/javascript](https://ouroboroscoding.com/define/javascript).

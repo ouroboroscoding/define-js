@@ -161,18 +161,18 @@ export default class Node extends Base {
 		this._minimum = null;
 		this._maximum = null;
 
-		// If there's a regex string available
-		if('__regex__' in oDetails) {
-			this.regex(oDetails.__regex__);
-		}
-
-		// Else if there's a list of options
-		else if('__options__' in oDetails) {
+		// If we have options
+		if('__options__' in oDetails) {
 			this.options(oDetails.__options__);
 		}
 
-		// Else
+		// Else, no options
 		else {
+
+			// If there's a regex string available
+			if('__regex__' in oDetails) {
+				this.regex(oDetails.__regex__);
+			}
 
 			// If there's a min or max
 			const bMin = '__minimum__' in oDetails;
